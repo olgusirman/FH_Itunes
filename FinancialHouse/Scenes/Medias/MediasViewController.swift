@@ -13,17 +13,17 @@
 import UIKit
 
 protocol MediasDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Medias.Something.ViewModel)
+    func displayItems(viewModel: Medias.FetchMedias.ViewModel)
 }
-
 final class MediasViewController: BaseViewController, MediasDisplayLogic {
     
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
-    var interactor: MediasBusinessLogic?
-    var router: (NSObjectProtocol & MediasRoutingLogic & MediasDataPassing)?
-
+    fileprivate var interactor: MediasBusinessLogic?
+    fileprivate var router: (NSObjectProtocol & MediasRoutingLogic & MediasDataPassing)?
+    fileprivate var viewModel: Medias.FetchMedias.ViewModel?
+    
     // MARK: Setup
     
     private func setup() {
@@ -51,22 +51,12 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     }
     
     // MARK: View lifecycle
-    
-    var items: [ItunesItem]?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        doSomething()
+        fetchMedias()
         configureUI()
-        
-        ItunesNetworkManager().searchMedia { (items, error) in
-            
-            DispatchQueue.main.async {
-                self.items = items
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     private func configureUI() {
@@ -77,15 +67,16 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         searchBar.delegate = self
     }
     
-    // MARK: Do something
+    // MARK: - Interactor
         
-    func doSomething() {
-        let request = Medias.Something.Request()
-        interactor?.doSomething(request: request)
+    private func fetchMedias(query: String = "") {
+        let request = Medias.FetchMedias.Request(term: query, media: .all)
+        interactor?.fetchMedias(request: request)
     }
     
-    func displaySomething(viewModel: Medias.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayItems(viewModel: Medias.FetchMedias.ViewModel) {
+        self.viewModel = viewModel
+        collectionView.reloadData()
     }
 }
 
@@ -93,13 +84,13 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
 extension MediasViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items?.count ?? 0
+        return viewModel?.displayedMedias.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withCellType: MediaCell.self, forIndexPath: indexPath)
-        let item = items?[indexPath.item]
+        let item = viewModel?.displayedMedias[indexPath.item]
         if let item = item {
             cell.configure(item: item)
         }
@@ -112,7 +103,9 @@ extension MediasViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         debugPrint("\(#function) \(indexPath.item)")
+        //interactor?...
         ////        presenter?.didChangeQuery(searchController.searchBar.text)
+        //router.... ??
     }
     
 }
@@ -120,14 +113,13 @@ extension MediasViewController: UICollectionViewDelegate {
 extension MediasViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        debugPrint(searchText)
+        fetchMedias(query: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        guard let query = searchBar.text, !query.isEmpty else {
+            return
+        }
+        fetchMedias(query: query)
     }
 }
