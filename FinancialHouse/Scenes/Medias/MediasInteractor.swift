@@ -13,25 +13,43 @@
 import UIKit
 
 protocol MediasBusinessLogic {
-    func doSomething(request: Medias.Something.Request)
+    func fetchMedias(request: Medias.FetchMedias.Request)
 }
 
 protocol MediasDataStore {
-    //var name: String { get set }
+    var items: [ItunesItem]? { get }
 }
 
-class MediasInteractor: MediasBusinessLogic, MediasDataStore {
+final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     var presenter: MediasPresentationLogic?
     var worker: MediasWorker?
-    //var name: String = ""
-    
+    var items: [ItunesItem]?
+
+    private let validator = ThrottledTextValidator()
+
     // MARK: Do something
-    
-    func doSomething(request: Medias.Something.Request) {
-        worker = MediasWorker()
-        worker?.doSomeWork()
+
+    func fetchMedias(request: Medias.FetchMedias.Request) {
         
-        let response = Medias.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker = MediasWorker(ordersStore: ItunesNetworkManager())
+
+        validator.validate(query: request.term) { [weak self] query in
+            guard let query = query, !query.isEmpty else { return }
+            self?.startFetching(with: request)
+        }
+    }
+    
+    private func startFetching(with request: Medias.FetchMedias.Request) {
+        worker?.fetchMedias(request: request, completionHandler: { [weak self] (itunesMainData, error) in
+            if let itunesMainData = itunesMainData {
+                self?.handleResponse(itunesMainData: itunesMainData)
+            }
+        })
+    }
+    
+    private func handleResponse(itunesMainData: ItunesMainData) {
+        self.items = itunesMainData.results
+        let response = Medias.FetchMedias.Response(items: itunesMainData.results)
+        self.presenter?.presentMedia(response: response)
     }
 }

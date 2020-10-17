@@ -26,6 +26,9 @@
 		052824B5253A81E600A87588 /* MediaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052824B3253A81E600A87588 /* MediaCell.xib */; };
 		052824BE253A870100A87588 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824BD253A870100A87588 /* ImageCache.swift */; };
 		052824C8253A8E9800A87588 /* ColumnLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824C7253A8E9800A87588 /* ColumnLayout.swift */; };
+		052824D0253B8AB400A87588 /* MediasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824CF253B8AB400A87588 /* MediasStore.swift */; };
+		052824D5253B979800A87588 /* ThrottledTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824D4253B979800A87588 /* ThrottledTextValidator.swift */; };
+		052824DA253B97B600A87588 /* Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824D9253B97B600A87588 /* Throttle.swift */; };
 		054548E52538FB4400DA58BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E42538FB4400DA58BF /* AppDelegate.swift */; };
 		054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E62538FB4400DA58BF /* SceneDelegate.swift */; };
 		054548EC2538FB4400DA58BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EA2538FB4400DA58BF /* Main.storyboard */; };
@@ -83,6 +86,9 @@
 		052824B3253A81E600A87588 /* MediaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCell.xib; sourceTree = "<group>"; };
 		052824BD253A870100A87588 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		052824C7253A8E9800A87588 /* ColumnLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnLayout.swift; sourceTree = "<group>"; };
+		052824CF253B8AB400A87588 /* MediasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasStore.swift; sourceTree = "<group>"; };
+		052824D4253B979800A87588 /* ThrottledTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottledTextValidator.swift; sourceTree = "<group>"; };
+		052824D9253B97B600A87588 /* Throttle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttle.swift; sourceTree = "<group>"; };
 		054548E12538FB4400DA58BF /* FinancialHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		054548E42538FB4400DA58BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		054548E62538FB4400DA58BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 				052824A5253A80F600A87588 /* Identifiable */,
 				0528249D253A80C200A87588 /* UI+ */,
 				05282453253A739500A87588 /* Reachability.swift */,
+				052824D4253B979800A87588 /* ThrottledTextValidator.swift */,
+				052824D9253B97B600A87588 /* Throttle.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				0528246E253A75B100A87588 /* MediasModels.swift */,
 				0528246F253A75B100A87588 /* MediasViewController.swift */,
 				05282470253A75B100A87588 /* MediasInteractor.swift */,
+				052824CF253B8AB400A87588 /* MediasStore.swift */,
 			);
 			path = Medias;
 			sourceTree = "<group>";
@@ -506,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052824D5253B979800A87588 /* ThrottledTextValidator.swift in Sources */,
 				054549DE253A624E00DA58BF /* NetworkLogger.swift in Sources */,
 				054549DD253A624E00DA58BF /* Router.swift in Sources */,
 				054549DF253A624E00DA58BF /* EndPointType.swift in Sources */,
@@ -518,6 +528,7 @@
 				054549D8253A624E00DA58BF /* JSONParameterEncoder.swift in Sources */,
 				0528244E253A71C100A87588 /* CustomStringConvertible+.swift in Sources */,
 				054549DB253A624E00DA58BF /* HTTPTask.swift in Sources */,
+				052824D0253B8AB400A87588 /* MediasStore.swift in Sources */,
 				054549DA253A624E00DA58BF /* ItunesEndpoint.swift in Sources */,
 				052824AA253A810F00A87588 /* ClassIdentifiable.swift in Sources */,
 				052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */,
@@ -529,6 +540,7 @@
 				052824A0253A80DA00A87588 /* TableView+.swift in Sources */,
 				052824B4253A81E600A87588 /* MediaCell.swift in Sources */,
 				05282472253A75B100A87588 /* MediasWorker.swift in Sources */,
+				052824DA253B97B600A87588 /* Throttle.swift in Sources */,
 				052824BE253A870100A87588 /* ImageCache.swift in Sources */,
 				052824C8253A8E9800A87588 /* ColumnLayout.swift in Sources */,
 				05282475253A75B100A87588 /* MediasViewController.swift in Sources */,
