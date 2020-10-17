@@ -20,8 +20,8 @@ struct ItunesMainData: Codable, Equatable {
 
 // MARK: - Result
 struct ItunesItem: Codable, Equatable {
-    let wrapperType: WrapperType?
-    let kind: Kind?
+    let wrapperType: String?
+    let kind: String?
     let artistId: Int?
     let collectionId: Int?
     let trackId: Int?
@@ -37,12 +37,12 @@ struct ItunesItem: Codable, Equatable {
     let artworkUrl30: String?
     let artworkUrl60: String?
     let artworkUrl100: String?
-    let collectionPrice: Int?
-    let trackPrice: Int?
-    let trackRentalPrice: Int?
-    let collectionHdPrice: Int?
-    let trackHdPrice: Int?
-    let trackHdRentalPrice: Int?
+    let collectionPrice: Double?
+    let trackPrice: Double?
+    let trackRentalPrice: Double?
+    let collectionHdPrice: Double?
+    let trackHdPrice: Double?
+    let trackHdRentalPrice: Double?
     let releaseDate: Date?
     let collectionExplicitness: String?
     let trackExplicitness: String?
@@ -61,10 +61,6 @@ enum Kind: String, Codable, Equatable {
     case podcast = "podcast"
     case music = "music"
     case movie = "movie"
-}
-
-enum WrapperType: String, Codable, Equatable {
-    case track = "track"
 }
 
 // MARK: - Helper functions for creating encoders and decoders
