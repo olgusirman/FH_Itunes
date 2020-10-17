@@ -12,7 +12,32 @@
 
 import UIKit
 
-class MediasWorker {
-    func doSomeWork() {
+protocol MediasStoreProtocol {
+    func fetchMedias(request: Medias.FetchMedias.Request,
+                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void)
+}
+
+final class MediasWorker {
+    var ordersStore: MediasStoreProtocol
+    
+    init(ordersStore: MediasStoreProtocol) {
+        self.ordersStore = ordersStore
+    }
+    
+    func fetchMedias(request: Medias.FetchMedias.Request,
+                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void) {
+        
+        ordersStore.fetchMedias(request: request) { (itunesMainData, error) in
+            DispatchQueue.main.async {
+                
+                if let error = error {
+                    completionHandler(nil, error)
+                    return
+                }
+                
+                completionHandler(itunesMainData, nil)
+            }
+        }
     }
 }
+

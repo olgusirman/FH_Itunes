@@ -15,7 +15,7 @@ enum NetworkEnvironment {
 }
 
 public enum ItunesAPI {
-    case search
+    case search(term: String, media: String)
 }
 
 extension ItunesAPI: EndPointType {
@@ -44,12 +44,11 @@ extension ItunesAPI: EndPointType {
     
     var task: HTTPTask {
         switch self {
-        case .search:
-            #warning("Supply query request here")
+        case .search(let term, let media):
             return .requestParameters(
-                bodyParameters: ["term":"swift", "media":"podcast", "limit": 100],
+                bodyParameters: nil,
                 bodyEncoding: .urlEncoding,
-                urlParameters: ["term":"swift", "media":"podcast", "limit": "100"])
+                urlParameters: ["term": term, "media": media, "limit": "100"])
         }
     }
     

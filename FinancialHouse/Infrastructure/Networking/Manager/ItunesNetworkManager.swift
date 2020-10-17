@@ -19,7 +19,6 @@ enum NetworkResponse: String {
 }
 
 enum ItunesNetworkError: Error {
-    
     case unknown
     case authenticationError
     case badRequest
@@ -28,7 +27,7 @@ enum ItunesNetworkError: Error {
     case noData
     case decoding
     case network
-
+    
     var errorDescription: String {
         switch self {
         case .unknown: return "Some unknown error happened"
@@ -41,15 +40,14 @@ enum ItunesNetworkError: Error {
         case .network: return "Please check your network connection."
         }
     }
-    
 }
 
-enum Result<String>{
+enum Result<String> {
     case success
     case failure(ItunesNetworkError)
 }
 
-struct ItunesNetworkManager {
+struct ItunesNetworkManager: MediasStoreProtocol {
     static let environment: NetworkEnvironment = .production
     
     let router = Router<ItunesAPI>()
@@ -57,11 +55,12 @@ struct ItunesNetworkManager {
         newJSONDecoder()
     }
     
-    func searchMedia(completion: @escaping (_ items: [ItunesItem]?, _ error: ItunesNetworkError?) -> Void ) {
-        router.request(.search) { data, response, error in
+    func fetchMedias(request: Medias.FetchMedias.Request,
+                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void) {
+        router.request(.search(term: request.term, media: request.media.rawValue)) { data, response, error in
             
             if error != nil {
-                completion(nil, ItunesNetworkError.network)
+                completionHandler(nil, ItunesNetworkError.network)
             }
             
             if let response = response as? HTTPURLResponse {
@@ -69,28 +68,25 @@ struct ItunesNetworkManager {
                 switch result {
                 case .success:
                     guard let responseData = data else {
-                        completion(nil, ItunesNetworkError.noData)
+                        completionHandler(nil, ItunesNetworkError.noData)
                         return
                     }
                     do {
-                       let apiResponse = try decoder.decode(ItunesMainData.self, from: responseData)
-                        completion(apiResponse.results, nil)
+                        let apiResponse = try decoder.decode(ItunesMainData.self, from: responseData)
+                        completionHandler(apiResponse, nil)
                     } catch {
-                        completion(nil, ItunesNetworkError.decoding)
+                        completionHandler(nil, ItunesNetworkError.decoding)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    completionHandler(nil, networkFailureError)
                 }
             }
         }
     }
-    
-    
 }
 
-fileprivate extension HTTPURLResponse {
-    
-    func handleNetworkResponse() -> Result<String>{
+private extension HTTPURLResponse {
+    func handleNetworkResponse() -> Result<String> {
         switch statusCode {
         case 200...299: return .success
         case 401...500: return .failure(ItunesNetworkError.authenticationError)
@@ -99,5 +95,4 @@ fileprivate extension HTTPURLResponse {
         default: return .failure(ItunesNetworkError.failed)
         }
     }
-    
 }
