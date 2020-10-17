@@ -13,17 +13,31 @@
 import UIKit
 
 protocol MediasPresentationLogic {
-    func presentSomething(response: Medias.Something.Response)
+    func presentMedia(response: Medias.FetchMedias.Response)
 }
 
-class MediasPresenter: MediasPresentationLogic {
-    
+final class MediasPresenter: MediasPresentationLogic {
     weak var viewController: MediasDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Present Media
     
-    func presentSomething(response: Medias.Something.Response) {
-        let viewModel = Medias.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    /// Manipulate the response data business logic and turn into the viewModel presentation logic for views
+    func presentMedia(response: Medias.FetchMedias.Response) {
+        
+        guard let items = response.items else {
+            return
+        }
+        
+        var displayedMedias: [Medias.FetchMedias.ViewModel.DisplayedMedia] = []
+        
+        for item in items {
+            let media = Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\(item.artistId ?? 0)",
+                                                                    mediaArtworkUrl: item.artworkUrl100 ?? "",
+                                                                    mediaName: item.artistName ?? "")
+            displayedMedias.append(media)
+        }
+        
+        let viewModel = Medias.FetchMedias.ViewModel(displayedMedias: displayedMedias)
+        viewController?.displayItems(viewModel: viewModel)
     }
 }
