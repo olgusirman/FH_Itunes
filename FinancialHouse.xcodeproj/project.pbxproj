@@ -9,9 +9,25 @@
 /* Begin PBXBuildFile section */
 		0528244E253A71C100A87588 /* CustomStringConvertible+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528244D253A71C100A87588 /* CustomStringConvertible+.swift */; };
 		05282454253A739500A87588 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282453253A739500A87588 /* Reachability.swift */; };
+		05282471253A75B100A87588 /* MediasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246B253A75B100A87588 /* MediasPresenter.swift */; };
+		05282472253A75B100A87588 /* MediasWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246C253A75B100A87588 /* MediasWorker.swift */; };
+		05282473253A75B100A87588 /* MediasRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246D253A75B100A87588 /* MediasRouter.swift */; };
+		05282474253A75B100A87588 /* MediasModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246E253A75B100A87588 /* MediasModels.swift */; };
+		05282475253A75B100A87588 /* MediasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246F253A75B100A87588 /* MediasViewController.swift */; };
+		05282476253A75B100A87588 /* MediasInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282470253A75B100A87588 /* MediasInteractor.swift */; };
+		0528247F253A7E7900A87588 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528247E253A7E7900A87588 /* BaseViewController.swift */; };
+		052824A0253A80DA00A87588 /* TableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528249E253A80DA00A87588 /* TableView+.swift */; };
+		052824A1253A80DA00A87588 /* Storyboard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528249F253A80DA00A87588 /* Storyboard+.swift */; };
+		052824AA253A810F00A87588 /* ClassIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824A6253A810E00A87588 /* ClassIdentifiable.swift */; };
+		052824AB253A810F00A87588 /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824A7253A810F00A87588 /* NibIdentifiable.swift */; };
+		052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824A8253A810F00A87588 /* UICollectionView+Identifiable.swift */; };
+		052824AD253A810F00A87588 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824A9253A810F00A87588 /* UITableView+Identifiable.swift */; };
+		052824B4253A81E600A87588 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824B2253A81E600A87588 /* MediaCell.swift */; };
+		052824B5253A81E600A87588 /* MediaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052824B3253A81E600A87588 /* MediaCell.xib */; };
+		052824BE253A870100A87588 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824BD253A870100A87588 /* ImageCache.swift */; };
+		052824C8253A8E9800A87588 /* ColumnLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824C7253A8E9800A87588 /* ColumnLayout.swift */; };
 		054548E52538FB4400DA58BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E42538FB4400DA58BF /* AppDelegate.swift */; };
 		054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E62538FB4400DA58BF /* SceneDelegate.swift */; };
-		054548E92538FB4400DA58BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E82538FB4400DA58BF /* ViewController.swift */; };
 		054548EC2538FB4400DA58BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EA2538FB4400DA58BF /* Main.storyboard */; };
 		054548EE2538FB4B00DA58BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054548ED2538FB4B00DA58BF /* Assets.xcassets */; };
 		054548F12538FB4B00DA58BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EF2538FB4B00DA58BF /* LaunchScreen.storyboard */; };
@@ -50,10 +66,26 @@
 /* Begin PBXFileReference section */
 		0528244D253A71C100A87588 /* CustomStringConvertible+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+.swift"; sourceTree = "<group>"; };
 		05282453253A739500A87588 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0528246B253A75B100A87588 /* MediasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasPresenter.swift; sourceTree = "<group>"; };
+		0528246C253A75B100A87588 /* MediasWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasWorker.swift; sourceTree = "<group>"; };
+		0528246D253A75B100A87588 /* MediasRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasRouter.swift; sourceTree = "<group>"; };
+		0528246E253A75B100A87588 /* MediasModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasModels.swift; sourceTree = "<group>"; };
+		0528246F253A75B100A87588 /* MediasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasViewController.swift; sourceTree = "<group>"; };
+		05282470253A75B100A87588 /* MediasInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasInteractor.swift; sourceTree = "<group>"; };
+		0528247E253A7E7900A87588 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0528249E253A80DA00A87588 /* TableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+.swift"; sourceTree = "<group>"; };
+		0528249F253A80DA00A87588 /* Storyboard+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+.swift"; sourceTree = "<group>"; };
+		052824A6253A810E00A87588 /* ClassIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassIdentifiable.swift; sourceTree = "<group>"; };
+		052824A7253A810F00A87588 /* NibIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
+		052824A8253A810F00A87588 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
+		052824A9253A810F00A87588 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
+		052824B2253A81E600A87588 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
+		052824B3253A81E600A87588 /* MediaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCell.xib; sourceTree = "<group>"; };
+		052824BD253A870100A87588 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		052824C7253A8E9800A87588 /* ColumnLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnLayout.swift; sourceTree = "<group>"; };
 		054548E12538FB4400DA58BF /* FinancialHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		054548E42538FB4400DA58BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		054548E62538FB4400DA58BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		054548E82538FB4400DA58BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		054548EB2538FB4400DA58BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		054548ED2538FB4B00DA58BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		054548F02538FB4B00DA58BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,9 +145,88 @@
 		05282452253A738B00A87588 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				052824C5253A8E8A00A87588 /* UI */,
+				052824BC253A86F500A87588 /* ImageCache */,
+				052824A5253A80F600A87588 /* Identifiable */,
+				0528249D253A80C200A87588 /* UI+ */,
 				05282453253A739500A87588 /* Reachability.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		05282458253A745D00A87588 /* Medias */ = {
+			isa = PBXGroup;
+			children = (
+				052824B1253A81D300A87588 /* Cell */,
+				0528246B253A75B100A87588 /* MediasPresenter.swift */,
+				0528246C253A75B100A87588 /* MediasWorker.swift */,
+				0528246D253A75B100A87588 /* MediasRouter.swift */,
+				0528246E253A75B100A87588 /* MediasModels.swift */,
+				0528246F253A75B100A87588 /* MediasViewController.swift */,
+				05282470253A75B100A87588 /* MediasInteractor.swift */,
+			);
+			path = Medias;
+			sourceTree = "<group>";
+		};
+		0528247D253A7E6C00A87588 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0528247E253A7E7900A87588 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		0528249D253A80C200A87588 /* UI+ */ = {
+			isa = PBXGroup;
+			children = (
+				0528249F253A80DA00A87588 /* Storyboard+.swift */,
+				0528249E253A80DA00A87588 /* TableView+.swift */,
+			);
+			path = "UI+";
+			sourceTree = "<group>";
+		};
+		052824A5253A80F600A87588 /* Identifiable */ = {
+			isa = PBXGroup;
+			children = (
+				052824A6253A810E00A87588 /* ClassIdentifiable.swift */,
+				052824A7253A810F00A87588 /* NibIdentifiable.swift */,
+				052824A8253A810F00A87588 /* UICollectionView+Identifiable.swift */,
+				052824A9253A810F00A87588 /* UITableView+Identifiable.swift */,
+			);
+			path = Identifiable;
+			sourceTree = "<group>";
+		};
+		052824B1253A81D300A87588 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				052824B2253A81E600A87588 /* MediaCell.swift */,
+				052824B3253A81E600A87588 /* MediaCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		052824BC253A86F500A87588 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				052824BD253A870100A87588 /* ImageCache.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		052824C5253A8E8A00A87588 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				052824C6253A8E8D00A87588 /* CollectionView */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		052824C6253A8E8D00A87588 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				052824C7253A8E9800A87588 /* ColumnLayout.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		054548D82538FB4400DA58BF = {
@@ -145,7 +256,6 @@
 				054549E5253A626F00DA58BF /* MainSources */,
 				054549E4253A625C00DA58BF /* Scenes */,
 				054549E3253A625300DA58BF /* Infrastructure */,
-				054548E82538FB4400DA58BF /* ViewController.swift */,
 				054548EA2538FB4400DA58BF /* Main.storyboard */,
 				054548EF2538FB4B00DA58BF /* LaunchScreen.storyboard */,
 			);
@@ -222,6 +332,7 @@
 		054549E3253A625300DA58BF /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				0528247D253A7E6C00A87588 /* Base */,
 				05282452253A738B00A87588 /* Utilities */,
 				0528244C253A71AC00A87588 /* Protocol+ */,
 				054549EA253A66F600DA58BF /* Model */,
@@ -233,6 +344,7 @@
 		054549E4253A625C00DA58BF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				05282458253A745D00A87588 /* Medias */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -368,6 +480,7 @@
 			files = (
 				054548F12538FB4B00DA58BF /* LaunchScreen.storyboard in Resources */,
 				054548EE2538FB4B00DA58BF /* Assets.xcassets in Resources */,
+				052824B5253A81E600A87588 /* MediaCell.xib in Resources */,
 				054548EC2538FB4400DA58BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,19 +509,34 @@
 				054549DE253A624E00DA58BF /* NetworkLogger.swift in Sources */,
 				054549DD253A624E00DA58BF /* Router.swift in Sources */,
 				054549DF253A624E00DA58BF /* EndPointType.swift in Sources */,
-				054548E92538FB4400DA58BF /* ViewController.swift in Sources */,
+				0528247F253A7E7900A87588 /* BaseViewController.swift in Sources */,
 				054549EC253A670900DA58BF /* ItunesBaseModel.swift in Sources */,
+				052824AB253A810F00A87588 /* NibIdentifiable.swift in Sources */,
+				05282476253A75B100A87588 /* MediasInteractor.swift in Sources */,
+				052824AD253A810F00A87588 /* UITableView+Identifiable.swift in Sources */,
 				054548E52538FB4400DA58BF /* AppDelegate.swift in Sources */,
 				054549D8253A624E00DA58BF /* JSONParameterEncoder.swift in Sources */,
 				0528244E253A71C100A87588 /* CustomStringConvertible+.swift in Sources */,
 				054549DB253A624E00DA58BF /* HTTPTask.swift in Sources */,
 				054549DA253A624E00DA58BF /* ItunesEndpoint.swift in Sources */,
+				052824AA253A810F00A87588 /* ClassIdentifiable.swift in Sources */,
+				052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */,
 				054549D9253A624E00DA58BF /* ItunesNetworkManager.swift in Sources */,
 				054549D6253A624E00DA58BF /* ParameterEncoding.swift in Sources */,
 				054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */,
 				054549DC253A624E00DA58BF /* HTTPMethod.swift in Sources */,
+				05282473253A75B100A87588 /* MediasRouter.swift in Sources */,
+				052824A0253A80DA00A87588 /* TableView+.swift in Sources */,
+				052824B4253A81E600A87588 /* MediaCell.swift in Sources */,
+				05282472253A75B100A87588 /* MediasWorker.swift in Sources */,
+				052824BE253A870100A87588 /* ImageCache.swift in Sources */,
+				052824C8253A8E9800A87588 /* ColumnLayout.swift in Sources */,
+				05282475253A75B100A87588 /* MediasViewController.swift in Sources */,
+				05282474253A75B100A87588 /* MediasModels.swift in Sources */,
 				05282454253A739500A87588 /* Reachability.swift in Sources */,
 				054549D7253A624E00DA58BF /* URLParameterEncoding.swift in Sources */,
+				052824A1253A80DA00A87588 /* Storyboard+.swift in Sources */,
+				05282471253A75B100A87588 /* MediasPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
