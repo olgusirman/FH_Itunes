@@ -15,12 +15,32 @@ import UIKit
 enum Medias {
     // MARK: Use cases
     
-    enum Something {
+    enum FetchMedias {
+        enum MediaType: String {
+            case podcast
+            case movie
+            case music
+            case all
+        }
+        
         struct Request {
+            var term: String
+            var media: MediaType = .all
+            var limit: Int = 100
         }
+        
         struct Response {
+            var items: [ItunesItem]?
         }
+        
         struct ViewModel {
+            struct DisplayedMedia: Identifiable {
+                var id: String
+                var mediaArtworkUrl: String
+                var mediaName: String
+            }
+            
+            var displayedMedias: [DisplayedMedia]
         }
     }
 }
