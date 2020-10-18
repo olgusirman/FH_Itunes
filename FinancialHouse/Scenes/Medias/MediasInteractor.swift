@@ -13,20 +13,33 @@
 import UIKit
 
 protocol MediasBusinessLogic {
+    
     func fetchMedias(request: Medias.FetchMedias.Request)
+    
+    /// Improve the performance and searching user experience, search process handled with throttle reactive wrapper
     func fetchMediasWithThrottle(request: Medias.FetchMedias.Request)
+    
+    /// Helper method to selection for media type
     func showMediaTypePopUp( typeSelectionHandler: @escaping (_ selectType: Medias.FetchMedias.MediaType) -> Void ) -> UIAlertController
+    
+    /// Internal storeage for cached the selected mediaType
     var latestSelectedType: Medias.FetchMedias.MediaType? { get }
+    
+    /// Update the DataStore for selected Item
+    func selectedItem(with indexPath: IndexPath)
 }
 
 protocol MediasDataStore {
     var items: [ItunesItem]? { get }
+    var selectedItem: ItunesItem? { get set }
 }
 
 final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     var presenter: MediasPresentationLogic?
     var worker: MediasWorker?
     var items: [ItunesItem]?
+    var selectedItem: ItunesItem?
+    
     fileprivate var networkManager = ItunesNetworkManager()
     
     var latestSelectedType: Medias.FetchMedias.MediaType? {
@@ -41,7 +54,7 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     
     private let validator = ThrottledTextValidator()
     
-    // MARK: Do something
+    // MARK: MediasBusinessLogic
     
     func fetchMedias(request: Medias.FetchMedias.Request) {
         worker = MediasWorker(ordersStore: networkManager)
@@ -102,5 +115,9 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
         controller.addAction(allAction)
         controller.addAction(cancelAction)
         return controller
+    }
+    
+    func selectedItem(with indexPath: IndexPath) {
+        selectedItem = items?[indexPath.item]
     }
 }

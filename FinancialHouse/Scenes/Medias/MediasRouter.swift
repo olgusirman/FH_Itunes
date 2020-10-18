@@ -13,46 +13,37 @@
 import UIKit
 
 @objc protocol MediasRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToMediaDetail()
 }
 
 protocol MediasDataPassing {
     var dataStore: MediasDataStore? { get }
 }
 
-class MediasRouter: NSObject, MediasRoutingLogic, MediasDataPassing {
+final class MediasRouter: NSObject, MediasRoutingLogic, MediasDataPassing {
     
     weak var viewController: MediasViewController?
     var dataStore: MediasDataStore?
     
     // MARK: Routing
     
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
+    func routeToMediaDetail() {
+        let storyboard = UIStoryboard(name: "MediaDetail", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(ofType: MediaDetailViewController.self)
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+        navigateToSomewhere(source: viewController!, destination: destinationVC)
+    }
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: MediasViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func navigateToSomewhere(source: MediasViewController, destination: MediaDetailViewController){
+        source.show(destination, sender: nil)
+    }
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: MediasDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToSomewhere(source: MediasDataStore, destination: inout MediaDetailDataStore) {
+        destination.item = source.selectedItem
+    }
 }

@@ -29,6 +29,13 @@
 		052824D0253B8AB400A87588 /* MediasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824CF253B8AB400A87588 /* MediasStore.swift */; };
 		052824D5253B979800A87588 /* ThrottledTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824D4253B979800A87588 /* ThrottledTextValidator.swift */; };
 		052824DA253B97B600A87588 /* Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824D9253B97B600A87588 /* Throttle.swift */; };
+		05282503253CB85100A87588 /* MediaDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824FD253CB85100A87588 /* MediaDetailPresenter.swift */; };
+		05282504253CB85100A87588 /* MediaDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824FE253CB85100A87588 /* MediaDetailWorker.swift */; };
+		05282505253CB85100A87588 /* MediaDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052824FF253CB85100A87588 /* MediaDetailRouter.swift */; };
+		05282506253CB85100A87588 /* MediaDetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282500253CB85100A87588 /* MediaDetailModels.swift */; };
+		05282507253CB85100A87588 /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282501253CB85100A87588 /* MediaDetailViewController.swift */; };
+		05282508253CB85100A87588 /* MediaDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282502253CB85100A87588 /* MediaDetailInteractor.swift */; };
+		0528250D253CD17300A87588 /* MediaDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0528250C253CD17300A87588 /* MediaDetail.storyboard */; };
 		054548E52538FB4400DA58BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E42538FB4400DA58BF /* AppDelegate.swift */; };
 		054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E62538FB4400DA58BF /* SceneDelegate.swift */; };
 		054548EC2538FB4400DA58BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EA2538FB4400DA58BF /* Main.storyboard */; };
@@ -89,6 +96,13 @@
 		052824CF253B8AB400A87588 /* MediasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasStore.swift; sourceTree = "<group>"; };
 		052824D4253B979800A87588 /* ThrottledTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottledTextValidator.swift; sourceTree = "<group>"; };
 		052824D9253B97B600A87588 /* Throttle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttle.swift; sourceTree = "<group>"; };
+		052824FD253CB85100A87588 /* MediaDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailPresenter.swift; sourceTree = "<group>"; };
+		052824FE253CB85100A87588 /* MediaDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailWorker.swift; sourceTree = "<group>"; };
+		052824FF253CB85100A87588 /* MediaDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailRouter.swift; sourceTree = "<group>"; };
+		05282500253CB85100A87588 /* MediaDetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailModels.swift; sourceTree = "<group>"; };
+		05282501253CB85100A87588 /* MediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
+		05282502253CB85100A87588 /* MediaDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailInteractor.swift; sourceTree = "<group>"; };
+		0528250C253CD17300A87588 /* MediaDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaDetail.storyboard; sourceTree = "<group>"; };
 		054548E12538FB4400DA58BF /* FinancialHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		054548E42538FB4400DA58BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		054548E62538FB4400DA58BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +252,20 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		052824FC253CB84100A87588 /* MediaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				052824FD253CB85100A87588 /* MediaDetailPresenter.swift */,
+				052824FE253CB85100A87588 /* MediaDetailWorker.swift */,
+				052824FF253CB85100A87588 /* MediaDetailRouter.swift */,
+				05282500253CB85100A87588 /* MediaDetailModels.swift */,
+				05282501253CB85100A87588 /* MediaDetailViewController.swift */,
+				05282502253CB85100A87588 /* MediaDetailInteractor.swift */,
+				0528250C253CD17300A87588 /* MediaDetail.storyboard */,
+			);
+			path = MediaDetail;
+			sourceTree = "<group>";
+		};
 		054548D82538FB4400DA58BF = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +381,7 @@
 		054549E4253A625C00DA58BF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				052824FC253CB84100A87588 /* MediaDetail */,
 				05282458253A745D00A87588 /* Medias */,
 			);
 			path = Scenes;
@@ -488,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				054548F12538FB4B00DA58BF /* LaunchScreen.storyboard in Resources */,
+				0528250D253CD17300A87588 /* MediaDetail.storyboard in Resources */,
 				054548EE2538FB4B00DA58BF /* Assets.xcassets in Resources */,
 				052824B5253A81E600A87588 /* MediaCell.xib in Resources */,
 				054548EC2538FB4400DA58BF /* Main.storyboard in Resources */,
@@ -516,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				052824D5253B979800A87588 /* ThrottledTextValidator.swift in Sources */,
+				05282506253CB85100A87588 /* MediaDetailModels.swift in Sources */,
 				054549DE253A624E00DA58BF /* NetworkLogger.swift in Sources */,
 				054549DD253A624E00DA58BF /* Router.swift in Sources */,
 				054549DF253A624E00DA58BF /* EndPointType.swift in Sources */,
@@ -534,9 +565,13 @@
 				052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */,
 				054549D9253A624E00DA58BF /* ItunesNetworkManager.swift in Sources */,
 				054549D6253A624E00DA58BF /* ParameterEncoding.swift in Sources */,
+				05282508253CB85100A87588 /* MediaDetailInteractor.swift in Sources */,
+				05282507253CB85100A87588 /* MediaDetailViewController.swift in Sources */,
 				054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */,
 				054549DC253A624E00DA58BF /* HTTPMethod.swift in Sources */,
 				05282473253A75B100A87588 /* MediasRouter.swift in Sources */,
+				05282503253CB85100A87588 /* MediaDetailPresenter.swift in Sources */,
+				05282504253CB85100A87588 /* MediaDetailWorker.swift in Sources */,
 				052824A0253A80DA00A87588 /* TableView+.swift in Sources */,
 				052824B4253A81E600A87588 /* MediaCell.swift in Sources */,
 				05282472253A75B100A87588 /* MediasWorker.swift in Sources */,
@@ -548,6 +583,7 @@
 				05282454253A739500A87588 /* Reachability.swift in Sources */,
 				054549D7253A624E00DA58BF /* URLParameterEncoding.swift in Sources */,
 				052824A1253A80DA00A87588 /* Storyboard+.swift in Sources */,
+				05282505253CB85100A87588 /* MediaDetailRouter.swift in Sources */,
 				05282471253A75B100A87588 /* MediasPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -108,6 +108,7 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         }
         
         if isThrottleActive {
+            /// Improve the performance and searching user experience
             interactor?.fetchMediasWithThrottle(request: request)
         } else {
             interactor?.fetchMedias(request: request)
@@ -120,7 +121,6 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     func displayItems(viewModel: Medias.FetchMedias.ViewModel) {
         self.viewModel = viewModel
         collectionView.reloadData()
-        self.view.endEditing(true)
     }
     
     func configureSearchBarPlaceholder(placeholder: String) {
@@ -150,10 +150,10 @@ extension MediasViewController: UICollectionViewDataSource {
 extension MediasViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        debugPrint("\(#function) \(indexPath.item)")
-        //interactor?...
-        ////        presenter?.didChangeQuery(searchController.searchBar.text)
-        //router.... ??
+        // Update the data store first
+        interactor?.selectedItem(with: indexPath)
+        // After then navigate
+        router?.routeToMediaDetail()
     }
     
 }

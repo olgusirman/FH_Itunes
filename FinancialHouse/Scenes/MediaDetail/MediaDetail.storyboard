@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cBJ-Mp-6f6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Media Detail View Controller-->
+        <scene sceneID="T8i-Ql-tzL">
+            <objects>
+                <viewController storyboardIdentifier="MediaDetailViewController" id="cBJ-Mp-6f6" customClass="MediaDetailViewController" customModule="FinancialHouse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fXu-z5-D8j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qch-Md-eG1">
+                                <rect key="frame" x="103.5" y="64" width="207" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qch-Md-eG1" secondAttribute="height" multiplier="1:1" id="LUm-EH-6Dl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owh-UX-5Cq">
+                                <rect key="frame" x="186.5" y="291" width="41.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5b8-Eh-OL5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="owh-UX-5Cq" firstAttribute="top" secondItem="qch-Md-eG1" secondAttribute="bottom" constant="20" id="0St-zZ-Iig"/>
+                            <constraint firstItem="qch-Md-eG1" firstAttribute="width" secondItem="fXu-z5-D8j" secondAttribute="width" multiplier="0.5" id="64c-uY-Zbd"/>
+                            <constraint firstItem="qch-Md-eG1" firstAttribute="centerX" secondItem="5b8-Eh-OL5" secondAttribute="centerX" id="NbC-iK-7uc"/>
+                            <constraint firstItem="qch-Md-eG1" firstAttribute="top" secondItem="5b8-Eh-OL5" secondAttribute="top" constant="20" id="lOp-Zu-rdT"/>
+                            <constraint firstItem="owh-UX-5Cq" firstAttribute="centerX" secondItem="qch-Md-eG1" secondAttribute="centerX" id="xkm-Hm-Dvb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mediaImageView" destination="qch-Md-eG1" id="Wwh-H2-sys"/>
+                        <outlet property="mediaTitle" destination="owh-UX-5Cq" id="kRZ-8C-zGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmG-ly-kf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-157.97101449275362" y="93.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
