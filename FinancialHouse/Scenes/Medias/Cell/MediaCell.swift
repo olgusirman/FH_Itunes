@@ -10,7 +10,7 @@ import UIKit
 final class MediaCell: UICollectionViewCell, NibIdentifiable & ClassIdentifiable {
 
     // MARK: - IBOutlet
-    @IBOutlet fileprivate weak var mediaImageView: UIImageView!
+    @IBOutlet fileprivate weak var mediaImageView: MediaArtworkImageView!
     @IBOutlet fileprivate weak var mediaTitle: UILabel!
     
     // MARK: - LifeCycle

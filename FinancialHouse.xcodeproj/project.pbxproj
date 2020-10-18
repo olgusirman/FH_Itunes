@@ -36,6 +36,7 @@
 		05282507253CB85100A87588 /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282501253CB85100A87588 /* MediaDetailViewController.swift */; };
 		05282508253CB85100A87588 /* MediaDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282502253CB85100A87588 /* MediaDetailInteractor.swift */; };
 		0528250D253CD17300A87588 /* MediaDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0528250C253CD17300A87588 /* MediaDetail.storyboard */; };
+		05282512253CDE2F00A87588 /* MediaArtworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */; };
 		054548E52538FB4400DA58BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E42538FB4400DA58BF /* AppDelegate.swift */; };
 		054548E72538FB4400DA58BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548E62538FB4400DA58BF /* SceneDelegate.swift */; };
 		054548EC2538FB4400DA58BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EA2538FB4400DA58BF /* Main.storyboard */; };
@@ -103,6 +104,7 @@
 		05282501253CB85100A87588 /* MediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
 		05282502253CB85100A87588 /* MediaDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailInteractor.swift; sourceTree = "<group>"; };
 		0528250C253CD17300A87588 /* MediaDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaDetail.storyboard; sourceTree = "<group>"; };
+		05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaArtworkImageView.swift; sourceTree = "<group>"; };
 		054548E12538FB4400DA58BF /* FinancialHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		054548E42538FB4400DA58BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		054548E62538FB4400DA58BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				0528247E253A7E7900A87588 /* BaseViewController.swift */,
+				05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				0528244E253A71C100A87588 /* CustomStringConvertible+.swift in Sources */,
 				054549DB253A624E00DA58BF /* HTTPTask.swift in Sources */,
 				052824D0253B8AB400A87588 /* MediasStore.swift in Sources */,
+				05282512253CDE2F00A87588 /* MediaArtworkImageView.swift in Sources */,
 				054549DA253A624E00DA58BF /* ItunesEndpoint.swift in Sources */,
 				052824AA253A810F00A87588 /* ClassIdentifiable.swift in Sources */,
 				052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */,

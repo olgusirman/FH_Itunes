@@ -20,7 +20,7 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
     
     // MARK: - IBOutlet
     
-    @IBOutlet fileprivate weak var mediaImageView: UIImageView!
+    @IBOutlet fileprivate weak var mediaImageView: MediaArtworkImageView!
     @IBOutlet fileprivate weak var mediaTitle: UILabel!
         
     var interactor: MediaDetailBusinessLogic?

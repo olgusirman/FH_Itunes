@@ -23,17 +23,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VIh-Nx-gqx">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VIh-Nx-gqx" customClass="MediaArtworkImageView" customModule="FinancialHouse" customModuleProvider="target">
                         <rect key="frame" x="15" y="0.0" width="170.5" height="170.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="VIh-Nx-gqx" secondAttribute="height" multiplier="1:1" id="Kvy-uG-7s7"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="QpM-cs-H2W"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>
