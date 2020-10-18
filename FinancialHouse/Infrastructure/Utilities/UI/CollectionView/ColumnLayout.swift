@@ -32,33 +32,4 @@ final class ColumnFlowLayout: UICollectionViewFlowLayout {
             // Fallback on earlier versions
         }
     }
-    
-//    private var focusedIndexPath: IndexPath?
-//    
-//    override func prepare(forAnimatedBoundsChange oldBounds: CGRect) {
-//        super.prepare(forAnimatedBoundsChange: oldBounds)
-//        focusedIndexPath = collectionView?.indexPathsForVisibleItems.first
-//    }
-//    
-//    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-//        focusedIndexPath = collectionView?.indexPathsForVisibleItems.first
-//        return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
-//    }
-//    
-//    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
-//        guard let indexPath = focusedIndexPath,
-//              let attributes = layoutAttributesForItem(at: indexPath),
-//              let collectionView = collectionView else {
-//            
-//            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
-//        }
-//        
-//        return CGPoint(x: attributes.frame.origin.x - collectionView.contentInset.left,
-//                       y: attributes.frame.origin.y - collectionView.contentInset.top)
-//    }
-//        
-//    override func finalizeAnimatedBoundsChange() {
-//        super.finalizeAnimatedBoundsChange()
-//        focusedIndexPath = nil
-//    }
 }

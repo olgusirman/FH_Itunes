@@ -14,6 +14,7 @@ import UIKit
 
 protocol MediasPresentationLogic {
     func presentMedia(response: Medias.FetchMedias.Response)
+    func configurePlaceholder(dependsOnThe type: Medias.FetchMedias.MediaType)
 }
 
 final class MediasPresenter: MediasPresentationLogic {
@@ -39,5 +40,18 @@ final class MediasPresenter: MediasPresentationLogic {
         
         let viewModel = Medias.FetchMedias.ViewModel(displayedMedias: displayedMedias)
         viewController?.displayItems(viewModel: viewModel)
+    }
+    
+    func configurePlaceholder(dependsOnThe type: Medias.FetchMedias.MediaType) {
+        
+        let placeholderString: String
+        switch type {
+        case .all: placeholderString = "Search all iTunes Media..."
+        case .movie: placeholderString = "Search iTunes Movie..."
+        case .podcast: placeholderString = "Search iTunes Podcast..."
+        case .music: placeholderString = "Search iTunes Music..."
+        }
+        
+        viewController?.configureSearchBarPlaceholder(placeholder: placeholderString)
     }
 }

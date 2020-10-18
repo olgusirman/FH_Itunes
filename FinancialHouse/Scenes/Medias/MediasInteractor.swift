@@ -14,6 +14,9 @@ import UIKit
 
 protocol MediasBusinessLogic {
     func fetchMedias(request: Medias.FetchMedias.Request)
+    func fetchMediasWithThrottle(request: Medias.FetchMedias.Request)
+    func showMediaTypePopUp( typeSelectionHandler: @escaping (_ selectType: Medias.FetchMedias.MediaType) -> Void ) -> UIAlertController
+    var latestSelectedType: Medias.FetchMedias.MediaType? { get }
 }
 
 protocol MediasDataStore {
@@ -24,15 +27,30 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     var presenter: MediasPresentationLogic?
     var worker: MediasWorker?
     var items: [ItunesItem]?
-
+    fileprivate var networkManager = ItunesNetworkManager()
+    
+    var latestSelectedType: Medias.FetchMedias.MediaType? {
+        didSet {
+            guard let latestSelectedType = latestSelectedType else {
+                presenter?.configurePlaceholder(dependsOnThe: .all)
+                return
+            }
+            presenter?.configurePlaceholder(dependsOnThe: latestSelectedType)
+        }
+    }
+    
     private let validator = ThrottledTextValidator()
-
+    
     // MARK: Do something
-
+    
     func fetchMedias(request: Medias.FetchMedias.Request) {
+        worker = MediasWorker(ordersStore: networkManager)
+        self.startFetching(with: request)
+    }
+    
+    func fetchMediasWithThrottle(request: Medias.FetchMedias.Request) {
+        worker = MediasWorker(ordersStore: networkManager)
         
-        worker = MediasWorker(ordersStore: ItunesNetworkManager())
-
         validator.validate(query: request.term) { [weak self] query in
             guard let query = query, !query.isEmpty else { return }
             self?.startFetching(with: request)
@@ -51,5 +69,35 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
         self.items = itunesMainData.results
         let response = Medias.FetchMedias.Response(items: itunesMainData.results)
         self.presenter?.presentMedia(response: response)
+    }
+    
+    func showMediaTypePopUp( typeSelectionHandler: @escaping (_ selectType: Medias.FetchMedias.MediaType) -> Void ) -> UIAlertController {
+        let controller = UIAlertController(title: "Select Type", message: "Please select a media type to filter your medias", preferredStyle: .alert)
+        
+        let podcastAction = UIAlertAction(title: "Podcast", style: .default) { _ in
+            self.latestSelectedType = .podcast
+            typeSelectionHandler(.podcast)
+        }
+        
+        let musicAction = UIAlertAction(title: "Music", style: .default) { _ in
+            self.latestSelectedType = .music
+            typeSelectionHandler(.music)
+        }
+        
+        let movieAction = UIAlertAction(title: "Movie", style: .default) { _ in
+            self.latestSelectedType = .movie
+            typeSelectionHandler(.movie)
+        }
+        
+        let allAction = UIAlertAction(title: "All", style: .default) { _ in
+            self.latestSelectedType = .all
+            typeSelectionHandler(.all)
+        }
+        
+        controller.addAction(podcastAction)
+        controller.addAction(musicAction)
+        controller.addAction(movieAction)
+        controller.addAction(allAction)
+        return controller
     }
 }

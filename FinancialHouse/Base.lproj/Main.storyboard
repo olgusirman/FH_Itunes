@@ -23,7 +23,7 @@
                                 <collectionViewLayout key="collectionViewLayout" id="wkt-QF-G6x" customClass="ColumnFlowLayout" customModule="FinancialHouse" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
-                            <searchBar contentMode="redraw" placeholder="Search iTunes Media..." translatesAutoresizingMaskIntoConstraints="NO" id="SIg-sY-46B">
+                            <searchBar contentMode="redraw" placeholder="Search all iTunes Media..." translatesAutoresizingMaskIntoConstraints="NO" id="SIg-sY-46B">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -41,9 +41,7 @@
                             <constraint firstItem="SIg-sY-46B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hHC-rG-5ED"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="iTunes" id="3z6-L4-lZF">
-                        <barButtonItem key="rightBarButtonItem" title="Type" id="Cj8-FG-YIF"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="iTunes" id="3z6-L4-lZF"/>
                     <connections>
                         <outlet property="collectionView" destination="zB2-Tp-Em4" id="Yxm-uJ-j19"/>
                         <outlet property="searchBar" destination="SIg-sY-46B" id="YbA-5M-EYR"/>

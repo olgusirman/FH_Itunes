@@ -12,7 +12,7 @@ final class ThrottledTextValidator {
     private let throttle: Throttle
     private let validationRule: ((String) -> Bool)
     
-    init(throttle: Throttle = Throttle(minimumDelay: 0.3),
+    init(throttle: Throttle = Throttle(minimumDelay: 0.7),
          validationRule: @escaping ((String) -> Bool) = { query in return query.count > 2 }) {
         self.throttle = throttle
         self.validationRule = validationRule

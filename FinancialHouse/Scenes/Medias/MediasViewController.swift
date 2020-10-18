@@ -14,7 +14,9 @@ import UIKit
 
 protocol MediasDisplayLogic: AnyObject {
     func displayItems(viewModel: Medias.FetchMedias.ViewModel)
+    func configureSearchBarPlaceholder(placeholder: String)
 }
+
 final class MediasViewController: BaseViewController, MediasDisplayLogic {
     
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
@@ -57,29 +59,74 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         setup()
         fetchMedias()
         configureUI()
+        configureNavigationBarItem()
     }
     
     private func configureUI() {
         collectionView.register(cellType: MediaCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         searchBar.delegate = self
+    }
+    
+    private func configureNavigationBarItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Type", style: .done, target: self, action: #selector(selectTypeBarButtonPressed))
+    }
+    
+    // MARK: - Actions
+    @objc
+    func selectTypeBarButtonPressed() {
+        
+        if let controller = interactor?.showMediaTypePopUp(typeSelectionHandler: { [weak self] type in
+            self?.selectType(type: type)
+        }) {
+            self.present(controller, animated: true)
+        }
+    }
+    
+    private func selectType(type: Medias.FetchMedias.MediaType) {
+        
+        guard let query = searchBar.text, !query.isEmpty else {
+            return
+        }
+        fetchMedias(query: query, type: type, isThrottleActive: false)
     }
     
     // MARK: - Interactor
         
-    private func fetchMedias(query: String = "") {
-        let request = Medias.FetchMedias.Request(term: query, media: .all)
-        interactor?.fetchMedias(request: request)
+    private func fetchMedias(query: String = "", type: Medias.FetchMedias.MediaType? = nil, isThrottleActive: Bool = true) {
+        
+        let request: Medias.FetchMedias.Request
+        
+        /// Check the type situation, always response the latest selected one when searching
+        if let type = type {
+            request = Medias.FetchMedias.Request(term: query, media: type)
+        } else if let latestSelectedType = interactor?.latestSelectedType {
+            request = Medias.FetchMedias.Request(term: query, media: latestSelectedType)
+        } else {
+            request = Medias.FetchMedias.Request(term: query, media: .all)
+        }
+        
+        if isThrottleActive {
+            interactor?.fetchMediasWithThrottle(request: request)
+        } else {
+            interactor?.fetchMedias(request: request)
+        }
+        
     }
+    
+    // MARK: - MediasDisplayLogic
     
     func displayItems(viewModel: Medias.FetchMedias.ViewModel) {
         self.viewModel = viewModel
         collectionView.reloadData()
     }
+    
+    func configureSearchBarPlaceholder(placeholder: String) {
+        self.searchBar.placeholder = placeholder
+    }
+    
 }
-
 
 extension MediasViewController: UICollectionViewDataSource {
     
