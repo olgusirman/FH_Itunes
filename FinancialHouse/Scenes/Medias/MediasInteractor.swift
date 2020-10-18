@@ -94,10 +94,13 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
             typeSelectionHandler(.all)
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+        
         controller.addAction(podcastAction)
         controller.addAction(musicAction)
         controller.addAction(movieAction)
         controller.addAction(allAction)
+        controller.addAction(cancelAction)
         return controller
     }
 }
