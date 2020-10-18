@@ -120,6 +120,7 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     func displayItems(viewModel: Medias.FetchMedias.ViewModel) {
         self.viewModel = viewModel
         collectionView.reloadData()
+        self.view.endEditing(true)
     }
     
     func configureSearchBarPlaceholder(placeholder: String) {
