@@ -27,6 +27,8 @@ enum ItunesNetworkError: Error {
     case noData
     case decoding
     case network
+    case cannotDelete
+    case cannotDeleteId
     
     var errorDescription: String {
         switch self {
@@ -38,14 +40,16 @@ enum ItunesNetworkError: Error {
         case .noData: return "Response returned with no data to decode."
         case .decoding: return "We could not decode the response."
         case .network: return "Please check your network connection."
+        case .cannotDelete: return "There is an error while deleting this item"
+        case .cannotDeleteId: return "There is no deleted item id"
         }
     }
 }
 
-enum Result<String> {
-    case success
-    case failure(ItunesNetworkError)
-}
+//enum Result<String> {
+//    case success
+//    case failure(ItunesNetworkError)
+//}
 
 struct ItunesNetworkManager: MediasStoreProtocol {
     static let environment: NetworkEnvironment = .production
@@ -56,7 +60,7 @@ struct ItunesNetworkManager: MediasStoreProtocol {
     }
     
     func fetchMedias(request: Medias.FetchMedias.Request,
-                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void) {
+                     completionHandler: @escaping ([ItunesItem]?, ItunesNetworkError?) -> Void) {
         router.request(.search(term: request.term, media: request.media.rawValue)) { data, response, error in
             
             if error != nil {
@@ -73,7 +77,7 @@ struct ItunesNetworkManager: MediasStoreProtocol {
                     }
                     do {
                         let apiResponse = try decoder.decode(ItunesMainData.self, from: responseData)
-                        completionHandler(apiResponse, nil)
+                        completionHandler(apiResponse.results, nil)
                     } catch {
                         completionHandler(nil, ItunesNetworkError.decoding)
                     }
@@ -83,12 +87,16 @@ struct ItunesNetworkManager: MediasStoreProtocol {
             }
         }
     }
+    
+    func deleteMedia(request: Medias.DeleteMedia.Request, completionHandler: @escaping (ItunesItem?, IndexPath?, [ItunesItem]?, ItunesNetworkError?) -> Void) {
+        // No API for this
+    }
 }
 
 private extension HTTPURLResponse {
-    func handleNetworkResponse() -> Result<String> {
+    func handleNetworkResponse() -> Result<Any?, ItunesNetworkError> {
         switch statusCode {
-        case 200...299: return .success
+        case 200...299: return .success(nil)
         case 401...500: return .failure(ItunesNetworkError.authenticationError)
         case 501...599: return .failure(ItunesNetworkError.badRequest)
         case 600: return .failure(ItunesNetworkError.outdated)

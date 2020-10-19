@@ -14,7 +14,9 @@ import UIKit
 
 protocol MediasStoreProtocol {
     func fetchMedias(request: Medias.FetchMedias.Request,
-                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void)
+                     completionHandler: @escaping ([ItunesItem]?, ItunesNetworkError?) -> Void)
+    func deleteMedia(request: Medias.DeleteMedia.Request,
+                     completionHandler: @escaping (ItunesItem?, IndexPath?, [ItunesItem]?, ItunesNetworkError?) -> Void)
 }
 
 final class MediasWorker {
@@ -25,7 +27,7 @@ final class MediasWorker {
     }
     
     func fetchMedias(request: Medias.FetchMedias.Request,
-                     completionHandler: @escaping (ItunesMainData?, ItunesNetworkError?) -> Void) {
+                     completionHandler: @escaping ([ItunesItem]?, ItunesNetworkError?) -> Void) {
         
         ordersStore.fetchMedias(request: request) { (itunesMainData, error) in
             DispatchQueue.main.async {
@@ -39,5 +41,10 @@ final class MediasWorker {
             }
         }
     }
+    
+    func deleteMedia(request: Medias.DeleteMedia.Request, completionHandler: @escaping (ItunesItem?, IndexPath?, [ItunesItem]?, ItunesNetworkError?) -> Void) {
+        ordersStore.deleteMedia(request: request, completionHandler: completionHandler)
+    }
+    
 }
 

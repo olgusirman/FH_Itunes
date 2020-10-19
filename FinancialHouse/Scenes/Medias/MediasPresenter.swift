@@ -15,6 +15,7 @@ import UIKit
 protocol MediasPresentationLogic {
     func presentMedia(response: Medias.FetchMedias.Response)
     func configurePlaceholder(dependsOnThe type: Medias.FetchMedias.MediaType)
+    func deleteMedia(response: Medias.DeleteMedia.Response)
 }
 
 final class MediasPresenter: MediasPresentationLogic {
@@ -32,7 +33,7 @@ final class MediasPresenter: MediasPresentationLogic {
         var displayedMedias: [Medias.FetchMedias.ViewModel.DisplayedMedia] = []
         
         for item in items {
-            let media = Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\(item.artistId ?? 0)",
+            let media = Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\(item.collectionId ?? 0)",
                                                                     mediaArtworkUrl: item.artworkUrl100 ?? "",
                                                                     mediaName: item.artistName ?? "")
             displayedMedias.append(media)
@@ -54,4 +55,10 @@ final class MediasPresenter: MediasPresentationLogic {
         
         viewController?.configureSearchBarPlaceholder(placeholder: placeholderString)
     }
+    
+    func deleteMedia(response: Medias.DeleteMedia.Response) {
+        let viewModel = Medias.DeleteMedia.ViewModel(result: response.result, itemsAfterDeleted: response.itemsAfterDeleted, deletedIndexPath: response.deletedIndexPath)
+        viewController?.deleteMedia(viewModel: viewModel)
+    }
+    
 }

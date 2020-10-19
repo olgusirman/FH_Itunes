@@ -32,5 +32,28 @@ final class MediaCell: UICollectionViewCell, NibIdentifiable & ClassIdentifiable
         mediaTitle.text = item.mediaName
         mediaImageView.setImage(urlString: item.mediaArtworkUrl)
     }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            let duration = isHighlighted ? 0.45 : 0.4
+            let transform = isHighlighted ?
+                CGAffineTransform(scaleX: 0.96, y: 0.96) : CGAffineTransform.identity
+            let bgColor = isHighlighted ?
+                UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
+            let animations = {
+                self.transform = transform
+                //self.bgView.backgroundColor = bgColor
+                self.backgroundView?.backgroundColor = bgColor
+            }
+            
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           usingSpringWithDamping: 1.0,
+                           initialSpringVelocity: 0.0,
+                           options: [.allowUserInteraction, .beginFromCurrentState],
+                           animations: animations,
+                           completion: nil)
+        }
+    }
         
 }

@@ -22,7 +22,7 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
     
     @IBOutlet fileprivate weak var mediaImageView: MediaArtworkImageView!
     @IBOutlet fileprivate weak var mediaTitle: UILabel!
-        
+    
     var interactor: MediaDetailBusinessLogic?
     var router: (NSObjectProtocol & MediaDetailRoutingLogic & MediaDetailDataPassing)?
     
@@ -58,6 +58,8 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePassedDataItemWorker()
+        configureNavigationBarItem()
+        configureMediaTitle()
     }
     
     private func configurePassedDataItemWorker() {
@@ -66,9 +68,34 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
     }
     
     // MARK: MediaDetailDisplayLogic
-        
+    
     func displayMedia(viewModel: MediaDetail.ShowMedia.ViewModel) {
         mediaTitle.text = viewModel.displayedMedia.mediaName
         mediaImageView.setImage(urlString: viewModel.displayedMedia.mediaArtworkUrl)
     }
+    
+    // MARK: - Configure
+    private func configureNavigationBarItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .done, target: self, action: #selector(selectDeleteBarButtonPressed))
+    }
+    
+    private func configureMediaTitle() {
+        if #available(iOS 11.0, *) {
+            mediaTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        }
+    }
+    
+    // MARK: - Actions
+    @objc
+    func selectDeleteBarButtonPressed() {
+        
+        let controller = interactor?.presentDeleteItemPopUp { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        if let controller = controller {
+            present(controller, animated: true)
+        }
+    }
+    
 }

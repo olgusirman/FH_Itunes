@@ -27,6 +27,9 @@ protocol MediasBusinessLogic {
     
     /// Update the DataStore for selected Item
     func selectedItem(with indexPath: IndexPath)
+    
+    /// DeletedItem interactor and also update the cache
+    func deleteItem(request: Medias.DeleteMedia.Request)
 }
 
 protocol MediasDataStore {
@@ -39,8 +42,8 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     var worker: MediasWorker?
     var items: [ItunesItem]?
     var selectedItem: ItunesItem?
-    
-    fileprivate var networkManager = ItunesNetworkManager()
+   
+    fileprivate var repository = MediasRepository()
     
     var latestSelectedType: Medias.FetchMedias.MediaType? {
         didSet {
@@ -57,12 +60,12 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     // MARK: MediasBusinessLogic
     
     func fetchMedias(request: Medias.FetchMedias.Request) {
-        worker = MediasWorker(ordersStore: networkManager)
+        worker = MediasWorker(ordersStore: repository)
         self.startFetching(with: request)
     }
     
     func fetchMediasWithThrottle(request: Medias.FetchMedias.Request) {
-        worker = MediasWorker(ordersStore: networkManager)
+        worker = MediasWorker(ordersStore: repository)
         
         validator.validate(query: request.term) { [weak self] query in
             guard let query = query, !query.isEmpty else { return }
@@ -78,9 +81,9 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
         })
     }
     
-    private func handleResponse(itunesMainData: ItunesMainData) {
-        self.items = itunesMainData.results
-        let response = Medias.FetchMedias.Response(items: itunesMainData.results)
+    private func handleResponse(itunesMainData: [ItunesItem]) {
+        self.items = itunesMainData
+        let response = Medias.FetchMedias.Response(items: itunesMainData)
         self.presenter?.presentMedia(response: response)
     }
     
@@ -120,4 +123,34 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     func selectedItem(with indexPath: IndexPath) {
         selectedItem = items?[indexPath.item]
     }
+    
+    func deleteItem(request: Medias.DeleteMedia.Request) {
+        
+        worker = MediasWorker(ordersStore: repository)
+        worker?.deleteMedia(request: request, completionHandler: { (deletedItem, deletedIndexPath, items, error) in
+            
+            if let error = error {
+                let response = Medias.DeleteMedia.Response(result: .failure(error), itemsAfterDeleted: items, deletedIndexPath: nil)
+                self.presenter?.deleteMedia(response: response)
+                return
+            }
+
+            if let deletedIndexPath = deletedIndexPath {
+                // FIXME: actually this case is not error, It should be include empty success case, with empty object or sth
+                let response = Medias.DeleteMedia.Response(result: .failure(ItunesNetworkError.unknown), itemsAfterDeleted: items, deletedIndexPath: deletedIndexPath)
+                self.presenter?.deleteMedia(response: response)
+            }
+            
+            if let deletedItem = deletedItem {
+                let response = Medias.DeleteMedia.Response(result: .success(deletedItem), itemsAfterDeleted: items, deletedIndexPath: nil)
+                self.presenter?.deleteMedia(response: response)
+            }
+            
+            self.items = items
+            let response = Medias.FetchMedias.Response(items: items)
+            self.presenter?.presentMedia(response: response)
+            
+        })
+    }
+
 }

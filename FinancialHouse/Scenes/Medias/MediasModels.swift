@@ -43,4 +43,22 @@ enum Medias {
             var displayedMedias: [DisplayedMedia]
         }
     }
+    
+    enum DeleteMedia {
+        struct Request {
+            var item: ItunesItem
+        }
+        
+        struct Response {
+            var result: Result<ItunesItem, Error>
+            var itemsAfterDeleted: [ItunesItem]?
+            var deletedIndexPath: IndexPath?
+        }
+        
+        struct ViewModel {
+            var result: Result<ItunesItem, Error>
+            var itemsAfterDeleted: [ItunesItem]?
+            var deletedIndexPath: IndexPath?
+        }
+    }
 }

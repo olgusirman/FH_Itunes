@@ -26,7 +26,7 @@ class MediaDetailPresenter: MediaDetailPresentationLogic {
         guard let item = response.item else { return }
         
         let displayedMedia = MediaDetail.ShowMedia.ViewModel.DisplayedMedia(
-            id: "\(item.artistId ?? 0)",
+            id: "\(item.collectionId ?? 0)",
             mediaArtworkUrl: item.artworkUrl600 ?? "",
             mediaName: item.artistName ?? "")
         

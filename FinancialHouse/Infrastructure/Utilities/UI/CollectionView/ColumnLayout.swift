@@ -10,7 +10,7 @@ import UIKit
 final class ColumnFlowLayout: UICollectionViewFlowLayout {
     
     private let minColumnWidth: CGFloat = 250.0
-    private let cellHeight: CGFloat = 200.0
+    private let cellHeight: CGFloat = 150.0
     
     // MARK: Layout Overrides
     

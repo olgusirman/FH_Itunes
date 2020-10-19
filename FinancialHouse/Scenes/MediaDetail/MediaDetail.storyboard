@@ -23,9 +23,9 @@
                                     <constraint firstAttribute="width" secondItem="qch-Md-eG1" secondAttribute="height" multiplier="1:1" id="LUm-EH-6Dl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owh-UX-5Cq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="owh-UX-5Cq">
                                 <rect key="frame" x="0.0" y="291" width="414" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -39,6 +39,7 @@
                             <constraint firstItem="qch-Md-eG1" firstAttribute="centerX" secondItem="5b8-Eh-OL5" secondAttribute="centerX" id="NbC-iK-7uc"/>
                             <constraint firstItem="qch-Md-eG1" firstAttribute="top" secondItem="5b8-Eh-OL5" secondAttribute="top" constant="20" id="lOp-Zu-rdT"/>
                             <constraint firstItem="owh-UX-5Cq" firstAttribute="leading" secondItem="5b8-Eh-OL5" secondAttribute="leading" id="vGW-qI-mts"/>
+                            <constraint firstItem="5b8-Eh-OL5" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="owh-UX-5Cq" secondAttribute="bottom" id="wBr-bR-Reb"/>
                             <constraint firstItem="owh-UX-5Cq" firstAttribute="centerX" secondItem="qch-Md-eG1" secondAttribute="centerX" id="xkm-Hm-Dvb"/>
                         </constraints>
                     </view>
