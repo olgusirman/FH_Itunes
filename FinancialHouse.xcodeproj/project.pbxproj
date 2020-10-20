@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0500C9CE253F971A0094703B /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C9CD253F97190094703B /* EmptyView.swift */; };
+		0500C9D3253F99310094703B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C9D2253F99310094703B /* BaseView.swift */; };
 		0528244E253A71C100A87588 /* CustomStringConvertible+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528244D253A71C100A87588 /* CustomStringConvertible+.swift */; };
 		05282454253A739500A87588 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05282453253A739500A87588 /* Reachability.swift */; };
 		05282471253A75B100A87588 /* MediasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0528246B253A75B100A87588 /* MediasPresenter.swift */; };
@@ -79,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0500C9CD253F97190094703B /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0500C9D2253F99310094703B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		0528244D253A71C100A87588 /* CustomStringConvertible+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+.swift"; sourceTree = "<group>"; };
 		05282453253A739500A87588 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		0528246B253A75B100A87588 /* MediasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasPresenter.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 			children = (
 				0528247E253A7E7900A87588 /* BaseViewController.swift */,
 				05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */,
+				0500C9CD253F97190094703B /* EmptyView.swift */,
+				0500C9D2253F99310094703B /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				052824D5253B979800A87588 /* ThrottledTextValidator.swift in Sources */,
 				05282506253CB85100A87588 /* MediaDetailModels.swift in Sources */,
 				054549DE253A624E00DA58BF /* NetworkLogger.swift in Sources */,
+				0500C9CE253F971A0094703B /* EmptyView.swift in Sources */,
 				054549DD253A624E00DA58BF /* Router.swift in Sources */,
 				054549DF253A624E00DA58BF /* EndPointType.swift in Sources */,
 				0528247F253A7E7900A87588 /* BaseViewController.swift in Sources */,
@@ -613,6 +620,7 @@
 				05282505253CB85100A87588 /* MediaDetailRouter.swift in Sources */,
 				05282471253A75B100A87588 /* MediasPresenter.swift in Sources */,
 				0528251D253CF63200A87588 /* MediasMemStore.swift in Sources */,
+				0500C9D3253F99310094703B /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

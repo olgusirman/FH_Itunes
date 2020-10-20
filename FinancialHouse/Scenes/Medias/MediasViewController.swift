@@ -23,6 +23,7 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var emptyView: EmptyView!
     
     fileprivate var interactor: MediasBusinessLogic?
     fileprivate var router: (NSObjectProtocol & MediasRoutingLogic & MediasDataPassing)?
@@ -143,7 +144,12 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     
     func displayItems(viewModel: Medias.FetchMedias.ViewModel) {
         self.viewModel = viewModel
+        configureEmptyViewIfNeeded(itemCount: viewModel.displayedMedias.count)
         collectionView.reloadData()
+    }
+    
+    func configureEmptyViewIfNeeded(itemCount: Int) {
+        emptyView.isHidden = itemCount != 0
     }
     
     func configureSearchBarPlaceholder(placeholder: String) {
@@ -224,6 +230,7 @@ extension MediasViewController: UISearchBarDelegate {
         guard let query = searchBar.text, !query.isEmpty else {
             return
         }
+        self.searchBar.resignFirstResponder()
         fetchMedias(query: query)
     }
 }

@@ -39,21 +39,21 @@ class BaseViewController: UIViewController {
         
         switch reachability.connection {
         case .wifi:
-            print("Reachable via WiFi")
+            debugPrint("Reachable via WiFi")
             if let cachedTitle = cachedTitle {
                 self.navigationItem.title = cachedTitle
             }
             networkConnectionIsChanged(isOffline: false)
             networkConnectionHandler?(false)
         case .cellular:
-            print("Reachable via Cellular")
+            debugPrint("Reachable via Cellular")
             if let cachedTitle = cachedTitle {
                 self.navigationItem.title = cachedTitle
             }
             networkConnectionIsChanged(isOffline: false)
             networkConnectionHandler?(false)
         case .unavailable:
-            print("Network not reachable")
+            debugPrint("Network not reachable")
             self.cachedTitle = navigationItem.title
             self.navigationItem.title = "Your Internet Connection is offline..!"
             networkConnectionIsChanged(isOffline: true)
@@ -65,5 +65,9 @@ class BaseViewController: UIViewController {
     
     func networkConnectionIsChanged(isOffline: Bool) {
         
+    }
+    
+    func resign() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
