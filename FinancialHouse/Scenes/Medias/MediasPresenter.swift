@@ -16,6 +16,7 @@ protocol MediasPresentationLogic {
     func presentMedia(response: Medias.FetchMedias.Response)
     func configurePlaceholder(dependsOnThe type: Medias.FetchMedias.MediaType)
     func deleteMedia(response: Medias.DeleteMedia.Response)
+    func updateMedia(response: Medias.UpdateMedia.Response)
 }
 
 final class MediasPresenter: MediasPresentationLogic {
@@ -25,7 +26,6 @@ final class MediasPresenter: MediasPresentationLogic {
     
     /// Manipulate the response data business logic and turn into the viewModel presentation logic for views
     func presentMedia(response: Medias.FetchMedias.Response) {
-        
         guard let items = response.items else {
             return
         }
@@ -35,7 +35,8 @@ final class MediasPresenter: MediasPresentationLogic {
         for item in items {
             let media = Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\(item.collectionId ?? 0)",
                                                                     mediaArtworkUrl: item.artworkUrl100 ?? "",
-                                                                    mediaName: item.artistName ?? "")
+                                                                    mediaName: item.artistName ?? "",
+                                                                    isSelected: item.isSelected)
             displayedMedias.append(media)
         }
         
@@ -44,7 +45,6 @@ final class MediasPresenter: MediasPresentationLogic {
     }
     
     func configurePlaceholder(dependsOnThe type: Medias.FetchMedias.MediaType) {
-        
         let placeholderString: String
         switch type {
         case .all: placeholderString = "Search all iTunes Media..."
@@ -61,4 +61,7 @@ final class MediasPresenter: MediasPresentationLogic {
         viewController?.deleteMedia(viewModel: viewModel)
     }
     
+    func updateMedia(response: Medias.UpdateMedia.Response) {
+        viewController?.updateMedia(viewModel: Medias.UpdateMedia.ViewModel(updatedIndexPath: response.updatedIndexPath))
+    }
 }

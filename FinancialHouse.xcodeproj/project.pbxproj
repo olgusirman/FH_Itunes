@@ -58,6 +58,7 @@
 		054549DE253A624E00DA58BF /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549D4253A624E00DA58BF /* NetworkLogger.swift */; };
 		054549DF253A624E00DA58BF /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549D5253A624E00DA58BF /* EndPointType.swift */; };
 		054549EC253A670900DA58BF /* ItunesBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549EB253A670900DA58BF /* ItunesBaseModel.swift */; };
+		05FA0285253E3DE30015DE97 /* MediasCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		054549D4253A624E00DA58BF /* NetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		054549D5253A624E00DA58BF /* EndPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		054549EB253A670900DA58BF /* ItunesBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesBaseModel.swift; sourceTree = "<group>"; };
+		05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasCacheStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			children = (
 				0528251C253CF63200A87588 /* MediasMemStore.swift */,
 				05282527253D02CF00A87588 /* MediasRepository.swift */,
+				05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				052824AC253A810F00A87588 /* UICollectionView+Identifiable.swift in Sources */,
 				054549D9253A624E00DA58BF /* ItunesNetworkManager.swift in Sources */,
 				05282517253CEEF300A87588 /* Notification+.swift in Sources */,
+				05FA0285253E3DE30015DE97 /* MediasCacheStore.swift in Sources */,
 				054549D6253A624E00DA58BF /* ParameterEncoding.swift in Sources */,
 				05282508253CB85100A87588 /* MediaDetailInteractor.swift in Sources */,
 				05282507253CB85100A87588 /* MediaDetailViewController.swift in Sources */,

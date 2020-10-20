@@ -74,16 +74,16 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     }
     
     private func startFetching(with request: Medias.FetchMedias.Request) {
-        worker?.fetchMedias(request: request, completionHandler: { [weak self] (itunesMainData, error) in
-            if let itunesMainData = itunesMainData {
-                self?.handleResponse(itunesMainData: itunesMainData)
+        worker?.fetchMedias(request: request, completionHandler: { [weak self] (workerItems, error) in
+            if let items = workerItems {
+                self?.handleResponse(items: items)
             }
         })
     }
     
-    private func handleResponse(itunesMainData: [ItunesItem]) {
-        self.items = itunesMainData
-        let response = Medias.FetchMedias.Response(items: itunesMainData)
+    private func handleResponse(items: [ItunesItem]) {
+        self.items = items
+        let response = Medias.FetchMedias.Response(items: items)
         self.presenter?.presentMedia(response: response)
     }
     
@@ -121,7 +121,24 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     }
     
     func selectedItem(with indexPath: IndexPath) {
-        selectedItem = items?[indexPath.item]
+        // Update the model inline model and memoryStore
+        items?[indexPath.item].isSelected = true
+        
+        let selectedItem = items?[indexPath.item]
+        self.selectedItem = selectedItem
+        
+        if let items = items {
+            self.repository.updateItems(items: items)
+            let updateMediaResponse = Medias.UpdateMedia.Response(updatedIndexPath: indexPath)
+            self.presenter?.updateMedia(response: updateMediaResponse)
+            let response = Medias.FetchMedias.Response(items: items)
+            self.presenter?.presentMedia(response: response)
+        }
+        
+        // cache that selected item
+        if let selectedItem = selectedItem {
+            repository.cacheStore?.saveMedia(item: selectedItem, with: .selection)
+        }
     }
     
     func deleteItem(request: Medias.DeleteMedia.Request) {
@@ -144,12 +161,15 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
             if let deletedItem = deletedItem {
                 let response = Medias.DeleteMedia.Response(result: .success(deletedItem), itemsAfterDeleted: items, deletedIndexPath: nil)
                 self.presenter?.deleteMedia(response: response)
+                
+                // Save the deleted Item
+                self.repository.cacheStore?.saveMedia(item: deletedItem, with: .deletion)
             }
             
+            // Update medias after cache process ended
             self.items = items
             let response = Medias.FetchMedias.Response(items: items)
             self.presenter?.presentMedia(response: response)
-            
         })
     }
 

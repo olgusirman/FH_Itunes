@@ -31,6 +31,17 @@ final class MediaCell: UICollectionViewCell, NibIdentifiable & ClassIdentifiable
     func configure(item: Medias.FetchMedias.ViewModel.DisplayedMedia) {
         mediaTitle.text = item.mediaName
         mediaImageView.setImage(urlString: item.mediaArtworkUrl)
+        
+        if item.isSelected {
+            if #available(iOS 13.0, *) {
+                backgroundColor = .secondarySystemBackground
+            } else {
+                backgroundColor = .lightGray
+            }
+        
+        } else {
+            backgroundColor = .clear
+        }
     }
     
     override var isHighlighted: Bool {

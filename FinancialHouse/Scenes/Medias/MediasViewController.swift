@@ -16,6 +16,7 @@ protocol MediasDisplayLogic: AnyObject {
     func displayItems(viewModel: Medias.FetchMedias.ViewModel)
     func configureSearchBarPlaceholder(placeholder: String)
     func deleteMedia(viewModel: Medias.DeleteMedia.ViewModel)
+    func updateMedia(viewModel: Medias.UpdateMedia.ViewModel)
 }
 
 final class MediasViewController: BaseViewController, MediasDisplayLogic {
@@ -159,6 +160,18 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         collectionView.performBatchUpdates {
             if let indexPath = viewModel.deletedIndexPath {
                 collectionView.deleteItems(at: [indexPath])
+            }
+        } completion: { finished in
+            if finished {
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
+    func updateMedia(viewModel: Medias.UpdateMedia.ViewModel) {
+        collectionView.performBatchUpdates {
+            if let indexPath = viewModel.updatedIndexPath {
+                collectionView.reloadItems(at: [indexPath])
             }
         } completion: { finished in
             if finished {

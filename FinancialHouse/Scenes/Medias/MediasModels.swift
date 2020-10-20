@@ -38,6 +38,7 @@ enum Medias {
                 var id: String
                 var mediaArtworkUrl: String
                 var mediaName: String
+                var isSelected: Bool
             }
             
             var displayedMedias: [DisplayedMedia]
@@ -59,6 +60,19 @@ enum Medias {
             var result: Result<ItunesItem, Error>
             var itemsAfterDeleted: [ItunesItem]?
             var deletedIndexPath: IndexPath?
+        }
+    }
+    
+    enum UpdateMedia {
+        struct Request {
+        }
+        
+        struct Response {
+            var updatedIndexPath: IndexPath?
+        }
+        
+        struct ViewModel {
+            var updatedIndexPath: IndexPath?
         }
     }
 }

@@ -11,11 +11,11 @@ final class MediasRepository: MediasStoreProtocol {
     
     var memoryStore: MediasMemStore?
     var networkManager: ItunesNetworkManager?
-    // TODO: There should be also cached manager
+    var cacheStore: MediasCacheStore?
     
     init() {
         networkManager = ItunesNetworkManager()
-        
+        cacheStore = MediasCacheStore()
     }
     
     func updateItems(items: [ItunesItem]) {
@@ -40,9 +40,12 @@ final class MediasRepository: MediasStoreProtocol {
                 return
             }
             
+            // check the deleted medias inside the items and remove them
+            let copiedItems = self?.checkCachedRemovedAndSelectedItems(items: items) ?? []
+            
             // Update the memory store, when the items fetched from network
-            self?.updateItems(items: items)
-            completionHandler(items, nil)
+            self?.updateItems(items: copiedItems)
+            completionHandler(copiedItems, nil)
         })
         
     }
@@ -68,5 +71,29 @@ final class MediasRepository: MediasStoreProtocol {
             self?.updateItems(items: items)
             completionHandler(deletedItem, deletedIndexPath, items, nil)
         })
+    }
+    
+    private func checkCachedRemovedAndSelectedItems(items: [ItunesItem]) -> [ItunesItem] {
+        
+        var copiedItems = items
+        
+        for item in items {
+            if let cacheStore = self.cacheStore {
+                
+                if let deletedBefore = cacheStore.loadMedia(check: item, with: .deletion) {
+                    // find that deletedBeforeItem and remove it from items
+                    if let deletedBeforeIndex = copiedItems.firstIndex(of: deletedBefore) {
+                        copiedItems.remove(at: deletedBeforeIndex)
+                    }
+                } else if let selectedBefore = cacheStore.loadMedia(check: item, with: .selection) {
+                    // check that item is selected before
+                    if let selectedBeforeIndex = copiedItems.firstIndex(of: selectedBefore) {
+                        copiedItems[selectedBeforeIndex].isSelected = true
+                    }
+                }
+            }
+        }
+        
+        return copiedItems
     }
 }

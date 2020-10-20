@@ -54,6 +54,45 @@ struct ItunesItem: Codable, Equatable {
     let artworkUrl600: String?
     let genreIds: [String]?
     let genres: [String]?
+    
+    var isSelected: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+            case wrapperType
+            case kind
+            case artistId
+            case collectionId
+            case trackId
+            case artistName
+            case collectionName
+            case trackName
+            case collectionCensoredName
+            case trackCensoredName
+            case artistViewUrl
+            case collectionViewUrl
+            case feedUrl
+            case trackViewUrl
+            case artworkUrl30
+            case artworkUrl60
+            case artworkUrl100
+            case collectionPrice
+            case trackPrice
+            case trackRentalPrice
+            case collectionHdPrice
+            case trackHdPrice
+            case trackHdRentalPrice
+            case releaseDate
+            case collectionExplicitness
+            case trackExplicitness
+            case trackCount
+            case country
+            case currency
+            case primaryGenreName
+            case contentAdvisoryRating
+            case artworkUrl600
+            case genreIds
+            case genres
+        }
 }
 
 enum Kind: String, Codable, Equatable {
