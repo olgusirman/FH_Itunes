@@ -16,7 +16,7 @@ protocol MediaDetailDisplayLogic: AnyObject {
     func displayMedia(viewModel: MediaDetail.ShowMedia.ViewModel)
 }
 
-final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic {
+final class MediaDetailViewController: BaseViewController, MediaDetailDisplayLogic {
     
     // MARK: - IBOutlet
     
@@ -70,6 +70,7 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
     // MARK: MediaDetailDisplayLogic
     
     func displayMedia(viewModel: MediaDetail.ShowMedia.ViewModel) {
+        self.navigationItem.title = viewModel.displayedMedia.mediaName
         mediaTitle.text = viewModel.displayedMedia.mediaName
         mediaImageView.setImage(urlString: viewModel.displayedMedia.mediaArtworkUrl)
     }
@@ -96,6 +97,12 @@ final class MediaDetailViewController: UIViewController, MediaDetailDisplayLogic
         if let controller = controller {
             present(controller, animated: true)
         }
+    }
+    
+    override func networkConnectionIsChanged(isOffline: Bool) {
+        super.networkConnectionIsChanged(isOffline: isOffline)
+        
+        navigationItem.rightBarButtonItem?.isEnabled = !isOffline
     }
     
 }

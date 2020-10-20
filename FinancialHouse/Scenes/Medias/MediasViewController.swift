@@ -75,6 +75,10 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         configureUI()
         configureNavigationBarItem()
         configureDeleteNotificationCenter()
+        
+        networkConnectionHandler = { [weak self] isOffline in
+            self?.navigationItem.rightBarButtonItem?.isEnabled = !isOffline
+        }
     }
     
     deinit {
