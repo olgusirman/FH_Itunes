@@ -1,9 +1,9 @@
 //
 //  UITableView+Identifiable.swift
-//  Papr
+//  FinancialHouse
 //
-//  Created by Joan Disho on 22.07.18.
-//  Copyright © 2018 Joan Disho. All rights reserved.
+//  Created by Olgu SIRMAN on 22.07.18.
+//  Copyright © 2018 Olgu SIRMAN. All rights reserved.
 //
 
 import UIKit

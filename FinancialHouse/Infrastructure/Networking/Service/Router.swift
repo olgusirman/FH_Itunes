@@ -2,8 +2,8 @@
 //  NetworkService.swift
 //  NetworkLayer
 //
-//  Created by Malcolm Kumwenda on 2018/03/07.
-//  Copyright © 2018 Malcolm Kumwenda. All rights reserved.
+//  Created by Olgu SIRMAN on 2018/03/07.
+//  Copyright © 2018 Olgu SIRMAN. All rights reserved.
 //
 
 import Foundation

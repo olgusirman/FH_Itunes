@@ -1,9 +1,9 @@
 //
 //  NibIdentifiable.swift
-//  Papr
+//  FinancialHouse
 //
-//  Created by Joan Disho on 31.10.17.
-//  Copyright © 2017 Joan Disho. All rights reserved.
+//  Created by Olgu SIRMAN on 31.10.17.
+//  Copyright © 2017 Olgu SIRMAN. All rights reserved.
 //
 
 import UIKit
