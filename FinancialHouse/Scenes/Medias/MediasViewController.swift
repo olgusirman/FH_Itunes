@@ -166,16 +166,7 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
     }
     
     func deleteMedia(viewModel: Medias.DeleteMedia.ViewModel) {
-        
-        collectionView.performBatchUpdates {
-            if let indexPath = viewModel.deletedIndexPath {
-                collectionView.deleteItems(at: [indexPath])
-            }
-        } completion: { finished in
-            if finished {
-                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-            }
-        }
+        collectionView.reloadData()
     }
     
     func updateMedia(viewModel: Medias.UpdateMedia.ViewModel) {
