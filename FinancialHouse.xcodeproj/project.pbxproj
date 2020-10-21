@@ -175,14 +175,14 @@
 		05282452253A738B00A87588 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				052824C5253A8E8A00A87588 /* UI */,
-				052824BC253A86F500A87588 /* ImageCache */,
-				052824A5253A80F600A87588 /* Identifiable */,
-				0528249D253A80C200A87588 /* UI+ */,
-				05282453253A739500A87588 /* Reachability.swift */,
-				052824D4253B979800A87588 /* ThrottledTextValidator.swift */,
-				052824D9253B97B600A87588 /* Throttle.swift */,
 				05282516253CEEF300A87588 /* Notification+.swift */,
+				05282453253A739500A87588 /* Reachability.swift */,
+				052824D9253B97B600A87588 /* Throttle.swift */,
+				052824D4253B979800A87588 /* ThrottledTextValidator.swift */,
+				052824A5253A80F600A87588 /* Identifiable */,
+				052824BC253A86F500A87588 /* ImageCache */,
+				052824C5253A8E8A00A87588 /* UI */,
+				0528249D253A80C200A87588 /* UI+ */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -190,13 +190,13 @@
 		05282458253A745D00A87588 /* Medias */ = {
 			isa = PBXGroup;
 			children = (
-				052824B1253A81D300A87588 /* Cell */,
-				0528246B253A75B100A87588 /* MediasPresenter.swift */,
-				0528246C253A75B100A87588 /* MediasWorker.swift */,
-				0528246D253A75B100A87588 /* MediasRouter.swift */,
-				0528246E253A75B100A87588 /* MediasModels.swift */,
-				0528246F253A75B100A87588 /* MediasViewController.swift */,
 				05282470253A75B100A87588 /* MediasInteractor.swift */,
+				0528246E253A75B100A87588 /* MediasModels.swift */,
+				0528246B253A75B100A87588 /* MediasPresenter.swift */,
+				0528246D253A75B100A87588 /* MediasRouter.swift */,
+				0528246F253A75B100A87588 /* MediasViewController.swift */,
+				0528246C253A75B100A87588 /* MediasWorker.swift */,
+				052824B1253A81D300A87588 /* Cell */,
 			);
 			path = Medias;
 			sourceTree = "<group>";
@@ -204,10 +204,10 @@
 		0528247D253A7E6C00A87588 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				0528247E253A7E7900A87588 /* BaseViewController.swift */,
-				05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */,
-				0500C9CD253F97190094703B /* EmptyView.swift */,
 				0500C9D2253F99310094703B /* BaseView.swift */,
+				0528247E253A7E7900A87588 /* BaseViewController.swift */,
+				0500C9CD253F97190094703B /* EmptyView.swift */,
+				05282511253CDE2F00A87588 /* MediaArtworkImageView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -268,13 +268,13 @@
 		052824FC253CB84100A87588 /* MediaDetail */ = {
 			isa = PBXGroup;
 			children = (
-				052824FD253CB85100A87588 /* MediaDetailPresenter.swift */,
-				052824FE253CB85100A87588 /* MediaDetailWorker.swift */,
-				052824FF253CB85100A87588 /* MediaDetailRouter.swift */,
-				05282500253CB85100A87588 /* MediaDetailModels.swift */,
-				05282501253CB85100A87588 /* MediaDetailViewController.swift */,
-				05282502253CB85100A87588 /* MediaDetailInteractor.swift */,
 				0528250C253CD17300A87588 /* MediaDetail.storyboard */,
+				05282502253CB85100A87588 /* MediaDetailInteractor.swift */,
+				05282500253CB85100A87588 /* MediaDetailModels.swift */,
+				052824FD253CB85100A87588 /* MediaDetailPresenter.swift */,
+				052824FF253CB85100A87588 /* MediaDetailRouter.swift */,
+				05282501253CB85100A87588 /* MediaDetailViewController.swift */,
+				052824FE253CB85100A87588 /* MediaDetailWorker.swift */,
 			);
 			path = MediaDetail;
 			sourceTree = "<group>";
@@ -282,9 +282,9 @@
 		0528251B253CF5BE00A87588 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */,
 				0528251C253CF63200A87588 /* MediasMemStore.swift */,
 				05282527253D02CF00A87588 /* MediasRepository.swift */,
-				05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -313,11 +313,11 @@
 			isa = PBXGroup;
 			children = (
 				054549E6253A627E00DA58BF /* Delegate */,
+				054549E3253A625300DA58BF /* Infrastructure */,
+				054548EF2538FB4B00DA58BF /* LaunchScreen.storyboard */,
+				054548EA2538FB4400DA58BF /* Main.storyboard */,
 				054549E5253A626F00DA58BF /* MainSources */,
 				054549E4253A625C00DA58BF /* Scenes */,
-				054549E3253A625300DA58BF /* Infrastructure */,
-				054548EA2538FB4400DA58BF /* Main.storyboard */,
-				054548EF2538FB4B00DA58BF /* LaunchScreen.storyboard */,
 			);
 			path = FinancialHouse;
 			sourceTree = "<group>";
@@ -344,8 +344,8 @@
 			isa = PBXGroup;
 			children = (
 				054549C8253A624E00DA58BF /* Encoding */,
-				054549CC253A624E00DA58BF /* Manager */,
 				054549CE253A624E00DA58BF /* EndPoint */,
+				054549CC253A624E00DA58BF /* Manager */,
 				054549D0253A624E00DA58BF /* Service */,
 			);
 			path = Networking;
@@ -354,9 +354,9 @@
 		054549C8253A624E00DA58BF /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
+				054549CB253A624E00DA58BF /* JSONParameterEncoder.swift */,
 				054549C9253A624E00DA58BF /* ParameterEncoding.swift */,
 				054549CA253A624E00DA58BF /* URLParameterEncoding.swift */,
-				054549CB253A624E00DA58BF /* JSONParameterEncoder.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -380,11 +380,11 @@
 		054549D0253A624E00DA58BF /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				054549D1253A624E00DA58BF /* HTTPTask.swift */,
-				054549D2253A624E00DA58BF /* HTTPMethod.swift */,
-				054549D3253A624E00DA58BF /* Router.swift */,
-				054549D4253A624E00DA58BF /* NetworkLogger.swift */,
 				054549D5253A624E00DA58BF /* EndPointType.swift */,
+				054549D2253A624E00DA58BF /* HTTPMethod.swift */,
+				054549D1253A624E00DA58BF /* HTTPTask.swift */,
+				054549D4253A624E00DA58BF /* NetworkLogger.swift */,
+				054549D3253A624E00DA58BF /* Router.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -392,12 +392,12 @@
 		054549E3253A625300DA58BF /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				0528251B253CF5BE00A87588 /* Services */,
 				0528247D253A7E6C00A87588 /* Base */,
-				05282452253A738B00A87588 /* Utilities */,
-				0528244C253A71AC00A87588 /* Protocol+ */,
 				054549EA253A66F600DA58BF /* Model */,
 				054549C7253A624E00DA58BF /* Networking */,
+				0528244C253A71AC00A87588 /* Protocol+ */,
+				0528251B253CF5BE00A87588 /* Services */,
+				05282452253A738B00A87588 /* Utilities */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
