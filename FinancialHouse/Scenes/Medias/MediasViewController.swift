@@ -98,6 +98,9 @@ final class MediasViewController: BaseViewController, MediasDisplayLogic {
         
         if let controller = interactor?.showMediaTypePopUp(typeSelectionHandler: { [weak self] type in
             self?.selectType(type: type)
+            DispatchQueue.main.async {
+                self?.collectionView.setContentOffset(.zero, animated: true)
+            }
         }) {
             self.present(controller, animated: true)
         }
