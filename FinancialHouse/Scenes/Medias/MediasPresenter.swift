@@ -25,15 +25,12 @@ final class MediasPresenter: MediasPresentationLogic {
             return
         }
         
-        var displayedMedias: [Medias.FetchMedias.ViewModel.DisplayedMedia] = []
-        
-        for item in items {
-            let media = Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\(item.collectionId ?? 0)",
-                                                                    mediaArtworkUrl: item.artworkUrl100 ?? "",
-                                                                    mediaName: item.artistName ?? "",
-                                                                    isSelected: item.isSelected)
-            displayedMedias.append(media)
-        }
+        let displayedMedias = items.map({
+            Medias.FetchMedias.ViewModel.DisplayedMedia(id: "\($0.collectionId ?? 0)",
+                                                        mediaArtworkUrl: $0.artworkUrl100 ?? "",
+                                                        mediaName: $0.artistName ?? "",
+                                                        isSelected: $0.isSelected)
+        })
         
         let viewModel = Medias.FetchMedias.ViewModel(displayedMedias: displayedMedias)
         viewController?.displayItems(viewModel: viewModel)
