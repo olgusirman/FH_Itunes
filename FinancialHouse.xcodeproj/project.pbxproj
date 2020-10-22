@@ -45,7 +45,6 @@
 		054548EC2538FB4400DA58BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EA2538FB4400DA58BF /* Main.storyboard */; };
 		054548EE2538FB4B00DA58BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054548ED2538FB4B00DA58BF /* Assets.xcassets */; };
 		054548F12538FB4B00DA58BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 054548EF2538FB4B00DA58BF /* LaunchScreen.storyboard */; };
-		054548FC2538FB4B00DA58BF /* FinancialHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054548FB2538FB4B00DA58BF /* FinancialHouseTests.swift */; };
 		054549072538FB4B00DA58BF /* FinancialHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549062538FB4B00DA58BF /* FinancialHouseUITests.swift */; };
 		054549D6253A624E00DA58BF /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549C9253A624E00DA58BF /* ParameterEncoding.swift */; };
 		054549D7253A624E00DA58BF /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549CA253A624E00DA58BF /* URLParameterEncoding.swift */; };
@@ -59,6 +58,12 @@
 		054549DF253A624E00DA58BF /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549D5253A624E00DA58BF /* EndPointType.swift */; };
 		054549EC253A670900DA58BF /* ItunesBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054549EB253A670900DA58BF /* ItunesBaseModel.swift */; };
 		05FA0285253E3DE30015DE97 /* MediasCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */; };
+		05FF9EB32540A72900B56CD8 /* MediasViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF9EAF2540A72900B56CD8 /* MediasViewControllerTests.swift */; };
+		05FF9EB42540A72900B56CD8 /* MediasInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF9EB02540A72900B56CD8 /* MediasInteractorTests.swift */; };
+		05FF9EB52540A72900B56CD8 /* MediasWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF9EB12540A72900B56CD8 /* MediasWorkerTests.swift */; };
+		05FF9EB62540A72900B56CD8 /* MediasPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF9EB22540A72900B56CD8 /* MediasPresenterTests.swift */; };
+		05FF9EBE2540AD0400B56CD8 /* itunesItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 05FF9EBD2540AD0400B56CD8 /* itunesItems.json */; };
+		05FF9EC62540B08800B56CD8 /* MockItunesMainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF9EC52540B08800B56CD8 /* MockItunesMainData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +125,6 @@
 		054548F02538FB4B00DA58BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		054548F22538FB4B00DA58BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		054548F72538FB4B00DA58BF /* FinancialHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinancialHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		054548FB2538FB4B00DA58BF /* FinancialHouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialHouseTests.swift; sourceTree = "<group>"; };
 		054548FD2538FB4B00DA58BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		054549022538FB4B00DA58BF /* FinancialHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinancialHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		054549062538FB4B00DA58BF /* FinancialHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialHouseUITests.swift; sourceTree = "<group>"; };
@@ -137,6 +141,12 @@
 		054549D5253A624E00DA58BF /* EndPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		054549EB253A670900DA58BF /* ItunesBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesBaseModel.swift; sourceTree = "<group>"; };
 		05FA0284253E3DE30015DE97 /* MediasCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasCacheStore.swift; sourceTree = "<group>"; };
+		05FF9EAF2540A72900B56CD8 /* MediasViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasViewControllerTests.swift; sourceTree = "<group>"; };
+		05FF9EB02540A72900B56CD8 /* MediasInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasInteractorTests.swift; sourceTree = "<group>"; };
+		05FF9EB12540A72900B56CD8 /* MediasWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasWorkerTests.swift; sourceTree = "<group>"; };
+		05FF9EB22540A72900B56CD8 /* MediasPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasPresenterTests.swift; sourceTree = "<group>"; };
+		05FF9EBD2540AD0400B56CD8 /* itunesItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itunesItems.json; sourceTree = "<group>"; };
+		05FF9EC52540B08800B56CD8 /* MockItunesMainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockItunesMainData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,8 +335,13 @@
 		054548FA2538FB4B00DA58BF /* FinancialHouseTests */ = {
 			isa = PBXGroup;
 			children = (
-				054548FB2538FB4B00DA58BF /* FinancialHouseTests.swift */,
+				05FF9EBD2540AD0400B56CD8 /* itunesItems.json */,
 				054548FD2538FB4B00DA58BF /* Info.plist */,
+				05FF9EB02540A72900B56CD8 /* MediasInteractorTests.swift */,
+				05FF9EB22540A72900B56CD8 /* MediasPresenterTests.swift */,
+				05FF9EAF2540A72900B56CD8 /* MediasViewControllerTests.swift */,
+				05FF9EB12540A72900B56CD8 /* MediasWorkerTests.swift */,
+				05FF9EC52540B08800B56CD8 /* MockItunesMainData.swift */,
 			);
 			path = FinancialHouseTests;
 			sourceTree = "<group>";
@@ -551,6 +566,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FF9EBE2540AD0400B56CD8 /* itunesItems.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +636,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054548FC2538FB4B00DA58BF /* FinancialHouseTests.swift in Sources */,
+				05FF9EC62540B08800B56CD8 /* MockItunesMainData.swift in Sources */,
+				05FF9EB62540A72900B56CD8 /* MediasPresenterTests.swift in Sources */,
+				05FF9EB32540A72900B56CD8 /* MediasViewControllerTests.swift in Sources */,
+				05FF9EB52540A72900B56CD8 /* MediasWorkerTests.swift in Sources */,
+				05FF9EB42540A72900B56CD8 /* MediasInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

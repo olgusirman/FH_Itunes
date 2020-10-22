@@ -14,7 +14,7 @@ protocol MediasStoreProtocol {
                      completionHandler: @escaping (ItunesItem?, IndexPath?, [ItunesItem]?, ItunesNetworkError?) -> Void)
 }
 
-final class MediasWorker {
+class MediasWorker {
     var ordersStore: MediasStoreProtocol
     
     init(ordersStore: MediasStoreProtocol) {

@@ -32,13 +32,14 @@ protocol MediasDataStore {
     var selectedItem: ItunesItem? { get set }
 }
 
-final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
+class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     var presenter: MediasPresentationLogic?
-    var worker: MediasWorker?
+    var worker = MediasWorker(ordersStore: MediasInteractor.repository)
     var items: [ItunesItem]?
     var selectedItem: ItunesItem?
    
-    fileprivate var repository = MediasRepository()
+    fileprivate static var repository = MediasRepository()
+    
     
     var latestSelectedType: Medias.FetchMedias.MediaType? {
         didSet {
@@ -55,13 +56,10 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     // MARK: MediasBusinessLogic
     
     func fetchMedias(request: Medias.FetchMedias.Request) {
-        worker = MediasWorker(ordersStore: repository)
         self.startFetching(with: request)
     }
     
-    func fetchMediasWithThrottle(request: Medias.FetchMedias.Request) {
-        worker = MediasWorker(ordersStore: repository)
-        
+    func fetchMediasWithThrottle(request: Medias.FetchMedias.Request) {        
         validator.validate(query: request.term) { [weak self] query in
             guard let query = query, !query.isEmpty else { return }
             self?.startFetching(with: request)
@@ -69,7 +67,7 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
     }
     
     private func startFetching(with request: Medias.FetchMedias.Request) {
-        worker?.fetchMedias(request: request, completionHandler: { [weak self] (workerItems, error) in
+        worker.fetchMedias(request: request, completionHandler: { [weak self] (workerItems, error) in
             if let items = workerItems {
                 self?.handleResponse(items: items)
             }
@@ -123,7 +121,7 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
         self.selectedItem = selectedItem
         
         if let items = items {
-            self.repository.updateItems(items: items)
+            MediasInteractor.repository.updateItems(items: items)
             let updateMediaResponse = Medias.UpdateMedia.Response(updatedIndexPath: indexPath)
             self.presenter?.updateMedia(response: updateMediaResponse)
             let response = Medias.FetchMedias.Response(items: items)
@@ -132,14 +130,13 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
         
         // cache that selected item
         if let selectedItem = selectedItem {
-            repository.cacheStore?.saveMedia(item: selectedItem, with: .selection)
+            MediasInteractor.repository.cacheStore?.saveMedia(item: selectedItem, with: .selection)
         }
     }
     
     func deleteItem(request: Medias.DeleteMedia.Request) {
         
-        worker = MediasWorker(ordersStore: repository)
-        worker?.deleteMedia(request: request, completionHandler: { (deletedItem, deletedIndexPath, items, error) in
+        worker.deleteMedia(request: request, completionHandler: { (deletedItem, deletedIndexPath, items, error) in
             
             if let error = error {
                 let response = Medias.DeleteMedia.Response(result: .failure(error), itemsAfterDeleted: items, deletedIndexPath: nil)
@@ -158,7 +155,7 @@ final class MediasInteractor: MediasBusinessLogic, MediasDataStore {
                 self.presenter?.deleteMedia(response: response)
                 
                 // Save the deleted Item
-                self.repository.cacheStore?.saveMedia(item: deletedItem, with: .deletion)
+                MediasInteractor.repository.cacheStore?.saveMedia(item: deletedItem, with: .deletion)
             }
             
             // Update medias after cache process ended

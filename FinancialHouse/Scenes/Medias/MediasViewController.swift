@@ -16,13 +16,13 @@ protocol MediasDisplayLogic: AnyObject {
 
 final class MediasViewController: BaseViewController, MediasDisplayLogic {
     
-    @IBOutlet fileprivate weak var searchBar: UISearchBar!
-    @IBOutlet fileprivate weak var collectionView: UICollectionView!
-    @IBOutlet fileprivate weak var emptyView: EmptyView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyView: EmptyView!
     
-    fileprivate var interactor: MediasBusinessLogic?
-    fileprivate var router: (NSObjectProtocol & MediasRoutingLogic & MediasDataPassing)?
-    fileprivate var viewModel: Medias.FetchMedias.ViewModel?
+    var interactor: MediasBusinessLogic?
+    var router: (NSObjectProtocol & MediasRoutingLogic & MediasDataPassing)?
+    var viewModel: Medias.FetchMedias.ViewModel?
     
     // MARK: Setup
     
